@@ -9,6 +9,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  int selected = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,13 +57,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(15),
-                    child: Column(
-                      children: [
-                        Text("Sign in",style: TextStyle(fontSize: 25),
-                        ),
-                        Container(height: 2,color: Colors.orange,
-                            width: MediaQuery.sizeOf(context).width/2,)
-                      ],
+                    child: InkWell(
+                      onTap: (){
+                        setState(() {
+                          selected =1;
+
+                        });
+
+                      },
+                      child: Column(
+                        spacing: 10,
+                        children: [
+                          Text("Sign in",style: TextStyle(fontSize: 25),
+                          ),
+                          Container(height: 2,
+                            color: selected == 1 ? Colors.orange : Colors.grey,
+                              width: MediaQuery.sizeOf(context).width/2,)
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -71,6 +83,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Column(
+                      spacing: 10,
 
                       children: [
                         Text("Sign in",style: TextStyle(fontSize: 25),),
