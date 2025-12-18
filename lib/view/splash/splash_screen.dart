@@ -8,6 +8,17 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  autoNavigate() async{
+    Future.delayed(Duration(seconds: 3));
+
+  }
+  @override
+  void initState() {
+    autoNavigate();
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
