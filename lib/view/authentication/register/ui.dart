@@ -82,14 +82,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: Column(
-                      spacing: 10,
+                    child: InkWell(
+                      onTap: (){
+                        setState(() {
+                          selected =2;
+                        });
+                      },
+                      child: Column(
+                        spacing: 10,
 
-                      children: [
-                        Text("Sign in",style: TextStyle(fontSize: 25),),
-                        Container(height: 2,color: Colors.blue,
-                          width: MediaQuery.sizeOf(context).width/2,)
-                      ],
+                        children: [
+                          Text("Sign in",style: TextStyle(fontSize: 25),),
+                          Container(height: 2,
+                            color: selected == 2 ?Colors.orange :Colors.grey,
+                            width: MediaQuery.sizeOf(context).width/2,)
+                        ],
+                      ),
                     ),
                   ),
                 ),
