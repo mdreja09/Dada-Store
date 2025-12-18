@@ -1,5 +1,6 @@
 
-import 'package:dada_ecommerce/splash_screen/splash.dart';
+
+import 'package:dada_ecommerce/view/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main (){
