@@ -16,11 +16,14 @@ class TabBarWidget  extends StatelessWidget {
             spacing: 12,
 
             children: [
-              Text("title",
+              Text(title,
                 style: TextStyle(fontSize: 25),),
               Container(height: 3,
                 color: selected == 1 ?Colors.orange :Colors.grey,
-                width: MediaQuery.sizeOf(context).width/2,)
+                width: double.infinity,
+
+                //width: MediaQuery.sizeOf(context).width/2
+                )
             ],
           ),
         ),

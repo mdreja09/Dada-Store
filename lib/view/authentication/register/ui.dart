@@ -50,14 +50,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
               children: [
                 TabBarWidget(
-                  title: "Sign up",
+                  title: "Sign in",
                   onTap: () {
                     setState(() {
                       selected = 1;
                     });
                     selected = 1;
                   },
-                  selected: 1,
+                  selected: selected,
                 ),
 
                 TabBarWidget(
@@ -68,7 +68,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     });
                     selected = 2;
                   },
-                  selected: 2,
+                  selected: selected,
                 ),
               ],
             ),
