@@ -1,6 +1,8 @@
 import 'package:dada_ecommerce/widget/appbar/appbar.dart';
 import 'package:flutter/material.dart';
 
+import '../widget/tabbar.dart';
+
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
@@ -10,6 +12,7 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   int selected = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,78 +43,39 @@ class _RegisterScreenState extends State<RegisterScreen> {
             Container(
               height: 1,
               width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.grey,
-
-              ),
-
-
-
+              decoration: BoxDecoration(color: Colors.grey),
             ),
-             Row(
-               spacing: 20,
-               mainAxisAlignment: MainAxisAlignment.spaceAround,
+            Row(
+              spacing: 20,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
 
               children: [
-
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: InkWell(
-                      onTap: (){
-                        setState(() {
-                          selected =1;
-
-                        });
-
-                      },
-                      child: Column(
-                        spacing: 10,
-                        children: [
-                          Text("Sign in",style: TextStyle(fontSize: 25),
-                          ),
-                          Container(height: 2,
-                            color: selected == 1 ? Colors.orange : Colors.grey,
-                              width: MediaQuery.sizeOf(context).width/2,)
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: InkWell(
-                      onTap: (){
-                        setState(() {
-                          selected =2;
-                        });
-                      },
-                      child: Column(
-                        spacing: 10,
-
-                        children: [
-                          Text("Sign in",style: TextStyle(fontSize: 25),),
-                          Container(height: 2,
-                            color: selected == 2 ?Colors.orange :Colors.grey,
-                            width: MediaQuery.sizeOf(context).width/2,)
-                        ],
-                      ),
-                    ),
-                  ),
+                TabBarWidget(
+                  title: "Sign up",
+                  onTap: () {
+                    setState(() {
+                      selected = 1;
+                    });
+                    selected = 1;
+                  },
+                  selected: 1,
                 ),
 
-
+                TabBarWidget(
+                  title: "Sign up",
+                  onTap: () {
+                    setState(() {
+                      selected = 2;
+                    });
+                    selected = 2;
+                  },
+                  selected: 2,
+                ),
               ],
             ),
-
           ],
         ),
       ),
-
-
-
     );
   }
 }
