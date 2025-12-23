@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 class TabBarWidget  extends StatelessWidget {
   const TabBarWidget ({super.key, required this.onTap, required this.selected, required this.title});
+
   final VoidCallback onTap ;
   final int selected ;
   final String title ;

@@ -9,6 +9,8 @@ class LoginRegister extends StatefulWidget {
 }
 
 class _LoginsRegisterState extends State<LoginRegister> {
+  final _formKey = GlobalKey<FormState>();
+  bool _obscure = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,23 +43,26 @@ class _LoginsRegisterState extends State<LoginRegister> {
             children: [
               Expanded(
                 flex: 2,
-                child: Column(
-                  spacing: 0,
+                child: Form(
+                  key:_formKey ,
+                  child: Column(
+                    spacing: 0,
 
-                  children: [
-                    SizedBox(height: 21, width: 236),
+                    children: [
+                      SizedBox(height: 21, width: 236),
 
-                    Text(
-                      "Sign In",
-                      style: TextStyle(
-                        color: Color(0xff5F5F5F),
-                        fontWeight: FontWeight.w500,
-                        fontSize: 21,
+                      Text(
+                        "Sign In",
+                        style: TextStyle(
+                          color: Color(0xff5F5F5F),
+                          fontWeight: FontWeight.w500,
+                          fontSize: 21,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 3, width: 179),
-                    Container(height: 3, width: 179, color: Color(0xffF4A758)),
-                  ],
+                      SizedBox(height: 3, width: 179),
+                      Container(height: 3, width: 179, color: Color(0xffF4A758)),
+                    ],
+                  ),
                 ),
               ),
               Expanded(
@@ -108,7 +113,21 @@ class _LoginsRegisterState extends State<LoginRegister> {
                 SizedBox(height: 16, width: 171),
                 Padding(
                   padding: const EdgeInsets.only(right: 16),
-                  child: TextField(
+
+                  child: TextFormField(
+                    //key: _formKey,
+                    validator: (v) {
+                      if (v == null || v.isEmpty) {
+                        return "Please Enter Number";
+                      }
+                      if (!RegExp(r'^01[3-9]\d{8}$').hasMatch(v)) {
+                        return "Enter a valid Bangladeshi phone number";
+                      }
+
+                      return null;
+                    },
+
+
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -131,7 +150,8 @@ class _LoginsRegisterState extends State<LoginRegister> {
 
                 Padding(
                   padding: const EdgeInsets.only(right: 16),
-                  child: TextField(
+                  child: TextFormField(
+
                     decoration: InputDecoration(
                       suffixIcon: Icon(Icons.visibility_off),
                       border: OutlineInputBorder(
@@ -287,9 +307,24 @@ class _LoginsRegisterState extends State<LoginRegister> {
                   ),
                 ),
               ],
+
             ),
+
           ),
+          ElevatedButton(
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                print("object");
+              }
+            },
+            child: Text("Submit"),
+
+          ),
+
+
+
         ],
+
       ),
     );
   }
