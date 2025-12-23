@@ -1,79 +1,295 @@
 import 'package:flutter/material.dart';
 
-import '../widget/tabbar.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+class LoginRegister extends StatefulWidget {
+  const LoginRegister({super.key});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<LoginRegister> createState() => _LoginsRegisterState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
-  int selected = 1;
-
+class _LoginsRegisterState extends State<LoginRegister> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffF0F5F9),
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color(0xffFFFFFF),
+        backgroundColor: Colors.white,
 
         leading: InkWell(
-          focusColor: Colors.green,
-          onTap: () {
-            Navigator.pop(context);
+            focusColor: Colors.green,
+            onTap: (){
+              setState(() {
 
-            //Navigator.pop(context,MaterialPageRoute(builder: (context)=>LoginScreen()));
-          },
 
-          child: CircleAvatar(
-            backgroundColor: Color(0xffF6F6F6),
-            child: Image.asset(fit: BoxFit.fill, "assets/image/back.png"),
-          ),
-        ),
+
+              });
+
+             // Navigator.pop(context,MaterialPageRoute(builder: (context)=>LoginScreen()));
+            },
+            child: Image.asset("assets/image/back.png")),
         centerTitle: true,
-        title: Image.asset(height: 30, width: 133, "assets/image/dadaapp.png"),
+        title: Image.asset("assets/image/w_logo.png"),
+        //title: Center(child: Text("Data"),) ,
+       // title: Image.asset(height: 20, width: 120, "assets/image/w_logo.png"),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            Container(
-              height: 1,
-              width: double.infinity,
-              decoration: BoxDecoration(color: Colors.grey),
-            ),
-            Row(
-              spacing: 20,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+      body: ListView(
+        // crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Divider(thickness: 3, color: Colors.grey),
+          Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child: Column(
+                  spacing: 0,
 
+                  children: [
+                    SizedBox(height: 21, width: 236),
+
+                    Text(
+                      "Sign In",
+                      style: TextStyle(
+                        color: Color(0xff5F5F5F),
+                        fontWeight: FontWeight.w500,
+                        fontSize: 21,
+                      ),
+                    ),
+                    SizedBox(height: 3, width: 179),
+                    Container(height: 3, width: 179, color: Color(0xffF4A758)),
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Column(
+                  children: [
+                    SizedBox(height: 21, width: 236),
+
+                    Text(
+                      "Sign In",
+                      style: TextStyle(
+                        color: Color(0xff5F5F5F),
+                        fontSize: 21,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    SizedBox(height: 3, width: 179),
+
+                    Container(height: 3, width: 179, color: Colors.grey),
+                  ],
+                ),
+              ),
+            ],
+          ),
+
+          //2nd part in cloumn
+          Padding(
+            padding: const EdgeInsets.only(top: 17, left: 29),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TabBarWidget(
-                  title: "Sign in",
-                  onTap: () {
-                    setState(() {
-                      selected = 1;
-                    });
-                    selected = 1;
-                  },
-                  selected: selected,
+                SizedBox(height: 29, width: 178),
+                Text(
+                  "Let’s Get Started!",
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 22),
+                ),
+                SizedBox(width: 18),
+                Text(
+                  "Create an account",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                ),
+                SizedBox(width: 171, height: 21),
+
+                Text(
+                  "Phone Number",
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                ),
+                SizedBox(height: 16, width: 171),
+                Padding(
+                  padding: const EdgeInsets.only(right: 16),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      focusColor: Colors.blueAccent,
+                      hintText: "Enter Your Phone Number",
+                    ),
+                  ),
                 ),
 
-                TabBarWidget(
-                  title: "Sign up",
-                  onTap: () {
-                    setState(() {
-                      selected = 2;
-                    });
-                    selected = 2;
-                  },
-                  selected: selected,
+                //3nd part
+                SizedBox(width: 171, height: 21),
+
+                Text(
+                  "Password",
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 17),
+                ),
+
+                SizedBox(height: 17, width: 171),
+
+                Padding(
+                  padding: const EdgeInsets.only(right: 16),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      suffixIcon: Icon(Icons.visibility_off),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+
+                      focusColor: Colors.blueAccent,
+                      hintText: "***********",
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 20,
+                  ),
+
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "Forgot Password",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xffF4A758),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  height: 52,
+                  width: 420,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(width: 1),
+                    color: Color(0xffF4A758),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "Register",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
+                Row(
+                  children: [
+                    SizedBox(width: 100, height: 60),
+                    Container(
+                      height: 2,
+                      width: 100,
+                      decoration: BoxDecoration(color: Colors.grey),
+                    ),
+                    Text("OR", style: TextStyle(fontSize: 18)),
+                    Container(
+                      height: 2,
+                      width: 100,
+                      decoration: BoxDecoration(color: Colors.grey),
+                    ),
+                  ],
+                ),
+
+                //Google Sign in with google
+                Container(
+                  height: 52,
+                  width: 420,
+
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(width: 1),
+
+                      color: Color(0xffF4A7580F).withOpacity(0.12)
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset("assets/image/google.png", height: 30, width: 30),
+
+                      SizedBox(width: 18),
+
+                      Text(
+                        "Sig in with google",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+
+                  //child: Text("Sig in with google"),
+                ),
+
+                ////...........Facebook Account
+                SizedBox(height: 35),
+                Container(
+                  height: 52,
+                  width: 420,
+
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(width: 1),
+
+                      color: Color(0xffF4A7580F).withOpacity(0.12)
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset("assets/image/facebook.png", height: 30, width: 30),
+
+                      SizedBox(width: 18),
+
+                      Text(
+                        "Sig in with Facebook",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+
+                  //child: Text("Sig in with google"),
+                ),
+                SizedBox(
+                  height: 67,
+                  child: Center(
+
+                    child: RichText(
+
+                      text: TextSpan(
+                        text: "Already have an account?",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                            color: Color(0xff424242)
+                        ),
+                        children: [
+                          TextSpan(
+                            text: "Register here",
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xffF4A758)
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
