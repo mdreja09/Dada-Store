@@ -1,4 +1,5 @@
 import 'package:dada_ecommerce/view/authentication/register/loginScreen.dart';
+import 'package:dada_ecommerce/view/authentication/widget/CustomButton.dart';
 import 'package:flutter/material.dart';
 
 
@@ -273,33 +274,13 @@ class _LoginScreenState extends State<LoginRegister> {
                             ),
                             //////////////////////////////
                             //////////////////////
-                            GestureDetector(
-                              // onTap: () {
-                              //   Navigator.pushReplacement(
-                              //     context,
-                              //     MaterialPageRoute(builder: (context) => Home()),
-                              //   );
-                              // },
-                              child: Container(
-                                height: 52,
-                                width: 420,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  border: Border.all(width: 1),
-                                  color: Color(0xffF4A758),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    "LogIn",
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
+                            CustomButton(text: "Login",
+                              onTap: (){
+                              if (_formKey.currentState!.validate());
+
+
+                            },
+                             ),
                             Row(
                               children: [
                                 SizedBox(width: 100, height: 60),

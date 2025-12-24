@@ -122,7 +122,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     GestureDetector(
 
-                      child: CustomButton(text: 'Register', onTap: () {  },),
+                      child: CustomButton(text: 'Register',
+                        onTap: () {
+                        if (_formKey.currentState!.validate()) ;})
                     ),
                     Row(
                       children: [
