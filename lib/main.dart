@@ -1,7 +1,7 @@
 
 
-import 'package:dada_ecommerce/view/authentication/login/ui.dart';
-import 'package:dada_ecommerce/view/authentication/register/ui.dart';
+import 'package:dada_ecommerce/view/authentication/log%20in/registerScreen.dart';
+import 'package:dada_ecommerce/view/authentication/register/loginScreen.dart';
 import 'package:dada_ecommerce/view/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 

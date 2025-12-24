@@ -1,7 +1,7 @@
-import 'package:dada_ecommerce/view/authentication/register/ui.dart';
+import 'package:dada_ecommerce/view/authentication/register/loginScreen.dart';
 import 'package:flutter/material.dart';
 
-import '../login/ui.dart';
+
 
 class LoginRegister extends StatefulWidget {
   const LoginRegister({super.key});
@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginRegister> {
                     flex: 2,
                     child: InkWell(
                       onTap: () {
-                        selected = 1 ;
+                        selected = 1;
                         setState(() => isSignIn = true);
                       },
                       child: Column(
@@ -151,7 +151,7 @@ class _LoginScreenState extends State<LoginRegister> {
                             ),
                             SizedBox(width: 18),
                             Text(
-                              "Please enter your details to login",
+                              "Please enter your details to register",
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
@@ -414,13 +414,15 @@ class _LoginScreenState extends State<LoginRegister> {
                         ),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    print("ok");
-                  }
-                },
-                child: Text("Submit"),
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      print("ok");
+                    }
+                  },
+                  child: Text("Submit"),
+                ),
               ),
             ],
           ),
