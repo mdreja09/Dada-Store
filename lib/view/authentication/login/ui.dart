@@ -8,6 +8,10 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
+
+
+  bool isSignIn = true; // 🔥 tab control
+  bool _obscure = true; // 🔥 password visibility
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
         //title: Center(child: Text("Data"),) ,
         // title: Image.asset(height: 20, width: 120, "assets/image/w_logo.png"),
       ),
-      body: ListView(
+      body: Column(
         // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
 
@@ -90,238 +94,124 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
 
-          //2nd part in cloumn
           Padding(
-            padding: const EdgeInsets.only(top: 17, left: 29),
+            padding: const EdgeInsets.all(12.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              //mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(height: 29, width: 178),
-                Text(
-                  "Let’s Get Started!",
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 22),
-                ),
-                SizedBox(width: 18),
-                Text(
-                  "Create an account",
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                ),
-                SizedBox(width: 171, height: 21),
-
-                Text(
+                /// 🔹 PHONE NUMBER
+                const Text(
                   "Phone Number",
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                 ),
-                SizedBox(height: 16, width: 171),
-                Padding(
-                  padding: const EdgeInsets.only(right: 16),
+                const SizedBox(height: 10),
 
-                  child: TextFormField(
-                    //key: _formKey,
-                    validator: (v) {
-                      if (v == null || v.isEmpty) {
-                        return "Please Enter Number";
-                      }
-                      if (!RegExp(r'^01[3-9]\d{8}$').hasMatch(v)) {
-                        return "Enter a valid Bangladeshi phone number";
-                      }
-
-                      return null;
-                    },
-
-
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      focusColor: Colors.blueAccent,
-                      hintText: "Enter Your Phone Number",
+                TextFormField(
+                  keyboardType: TextInputType.phone,
+                  validator: (v) {
+                    if (v == null || v.isEmpty) {
+                      return "Please enter phone number";
+                    }
+                    if (!RegExp(r'^01[3-9]\d{8}$').hasMatch(v)) {
+                      return "Enter valid Bangladeshi number";
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    hintText: "01XXXXXXXXX",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                 ),
 
-                //3nd part
-                SizedBox(width: 171, height: 21),
 
-                Text(
-                  "Password",
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 17),
-                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
 
-                SizedBox(height: 17, width: 171),
+                  children: [
+                    const SizedBox(height: 20),
 
-                Padding(
-                  padding: const EdgeInsets.only(right: 16),
-                  child: TextFormField(
-
-                    decoration: InputDecoration(
-                      suffixIcon: Icon(Icons.visibility_off),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-
-                      focusColor: Colors.blueAccent,
-                      hintText: "***********",
+                    //2nd part in cloumn
+                    /// 🔹 PASSWORD
+                    const Text(
+                      "Password",
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 20,
-                  ),
+                    const SizedBox(height: 10),
 
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        "Forgot Password",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xffF4A758),
+                    TextFormField(
+                      obscureText: _obscure,
+                      validator: (v) {
+                        if (v == null || v.isEmpty) {
+                          return "Password required";
+                        }
+                        if (v.length < 6) {
+                          return "Password must be at least 6 characters";
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        hintText: "********",
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _obscure ? Icons.visibility_off : Icons.visibility,
+                          ),
+                          onPressed: () {
+                            setState(() => _obscure = !_obscure);
+                          },
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                Container(
-                  height: 52,
-                  width: 420,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(width: 1),
-                    color: Color(0xffF4A758),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "Register",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18,
-                      ),
                     ),
-                  ),
-                ),
-                Row(
-                  children: [
-                    SizedBox(width: 100, height: 60),
-                    Container(
-                      height: 2,
-                      width: 100,
-                      decoration: BoxDecoration(color: Colors.grey),
-                    ),
-                    Text("OR", style: TextStyle(fontSize: 18)),
-                    Container(
-                      height: 2,
-                      width: 100,
-                      decoration: BoxDecoration(color: Colors.grey),
-                    ),
+
+                    const SizedBox(height: 30),
                   ],
                 ),
 
-                //Google Sign in with google
-                Container(
-                  height: 52,
-                  width: 420,
 
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(width: 1),
 
-                      color: Color(0xffF4A7580F).withOpacity(0.12)
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset("assets/image/google.png", height: 30, width: 30),
+                /// 🔥 SUBMIT BUTTON
 
-                      SizedBox(width: 18),
-
-                      Text(
-                        "Sig in with google",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-
-                  //child: Text("Sig in with google"),
-                ),
-
-                ////...........Facebook Account
-                SizedBox(height: 35),
-                Container(
-                  height: 52,
-                  width: 420,
-
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(width: 1),
-
-                      color: Color(0xffF4A7580F).withOpacity(0.12)
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset("assets/image/facebook.png", height: 30, width: 30),
-
-                      SizedBox(width: 18),
-
-                      Text(
-                        "Sig in with Facebook",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-
-                  //child: Text("Sig in with google"),
-                ),
-                SizedBox(
-                  height: 67,
-                  child: Center(
-
-                    child: RichText(
-
-                      text: TextSpan(
-                        text: "Already have an account?",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 16,
-                            color: Color(0xff424242)
-                        ),
-                        children: [
-                          TextSpan(
-                            text: "Register here",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xffF4A758)
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
               ],
+
 
             ),
 
-          ),
-          ElevatedButton(
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                print("object");
-              }
-            },
-            child: Text("Submit"),
 
           ),
+
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+
+            children: [
+              SizedBox(
+                height: 52,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xffF4A758),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text("Form Valid ✅")),
+                      );
+                    }
+                  },
+                  child: Text(
+                    isSignIn ? "Sign In" : "Register",
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                  ),
+                ),
+              ),
+            ],
+          )
 
 
 
