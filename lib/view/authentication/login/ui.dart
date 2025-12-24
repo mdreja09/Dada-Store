@@ -196,7 +196,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Padding(
                             padding: const EdgeInsets.only(right: 16),
                             child: TextFormField(
-                              obscureText: true,
+                              obscureText: _obscure,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return "Password required";
@@ -208,15 +208,15 @@ class _LoginScreenState extends State<LoginScreen> {
                               },
         
         
-        
                               decoration: InputDecoration(
                                 suffixIcon: IconButton(
                                   icon: Icon(
                                     _obscure ? Icons.visibility_off : Icons.visibility,
                                   ),
+
                                   onPressed: () {
                                     setState(() {
-                                      _obscure = !_obscure;
+                                      _obscure =   !_obscure;
                                     });
                                   },
                                 ),
