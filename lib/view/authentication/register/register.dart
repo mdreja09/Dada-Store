@@ -124,7 +124,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
                       child: CustomButton(text: 'Register',
                         onTap: () {
-                        if (_formKey.currentState!.validate()) ;})
+                          if (_formKey.currentState!.validate());
+                          return;
+
+                      }
+
+                        )
                     ),
                     Row(
                       children: [

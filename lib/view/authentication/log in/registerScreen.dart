@@ -1,4 +1,4 @@
-import 'package:dada_ecommerce/view/authentication/register/loginScreen.dart';
+import 'package:dada_ecommerce/view/authentication/register/register.dart';
 import 'package:dada_ecommerce/view/authentication/widget/CustomButton.dart';
 import 'package:flutter/material.dart';
 
