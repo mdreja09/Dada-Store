@@ -1,4 +1,7 @@
+import 'package:dada_ecommerce/view/authentication/widget/custom_text_field.dart';
 import 'package:flutter/material.dart';
+
+import '../widget/CustomButton.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -116,110 +119,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(height: 15),
 
-                    //3nd part
-                    SizedBox(width: 171, height: 21),
 
-                    Text(
-                      "Password",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 17,
-                      ),
-                    ),
-
-                    SizedBox(height: 17, width: 171),
-
-                    Padding(
-                      padding: const EdgeInsets.only(right: 16),
-                      child: TextFormField(
-                        obscureText: _obscure,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "Password required";
-                          }
-                          if (!RegExp(
-                            r'^(?=.*[A-Za-z])(?=.*\d).{8,}$',
-                          ).hasMatch(value)) {
-                            return "Use letters & numbers (8+)";
-                          }
-                          return null;
-                        },
-
-                        decoration: InputDecoration(
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              _obscure
-                                  ? Icons.visibility_off
-                                  : Icons.visibility,
-                            ),
-
-                            onPressed: () {
-                              setState(() {
-                                _obscure = !_obscure;
-                              });
-                            },
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-
-                          focusColor: Colors.blueAccent,
-                          hintText: "Enter password",
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 20,
-                      ),
-
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            "Forgot Password",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xffF4A758),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    //////////////////////////////
-                    //////////////////////
                     GestureDetector(
-                      // onTap: () {
-                      //   Navigator.pushReplacement(
-                      //     context,
-                      //     MaterialPageRoute(builder: (context) => Home()),
-                      //   );
-                      // },
-                      child: Container(
-                        height: 52,
-                        width: 420,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(width: 1),
-                          color: Color(0xffF4A758),
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Register",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                      ),
+
+                      child: CustomButton(text: 'Register', onTap: () {  },),
                     ),
                     Row(
                       children: [
@@ -344,30 +247,6 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 }
 
-class CustomTextField extends StatelessWidget {
-  const CustomTextField({
-    super.key,
-    required this.nameC,
-    required this.validator,
-    required this.text,
-  });
 
-  final TextEditingController nameC;
-  final FormFieldValidator validator;
-  final String text;
 
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      controller: nameC,
-      keyboardType: TextInputType.phone,
-      validator: validator,
 
-      decoration: InputDecoration(
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-        focusColor: Colors.blueAccent,
-        hintText: "$text",
-      ),
-    );
-  }
-}
