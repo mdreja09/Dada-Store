@@ -42,6 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
 
+
           Divider(thickness: 3, color: Colors.grey),
           Row(
             children: [
@@ -89,6 +90,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
               ),
+            ],
+          ),
+          Column(
+           mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+
+
+              Text("data"),
+              Text("d")
             ],
           ),
 
