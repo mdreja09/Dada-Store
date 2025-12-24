@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -8,7 +9,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-
 
   bool isSignIn = true; // 🔥 tab control
   bool _obscure = true; // 🔥 password visibility
@@ -21,17 +21,14 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: Colors.white,
 
         leading: InkWell(
-            focusColor: Colors.green,
-            onTap: (){
-              setState(() {
+          focusColor: Colors.green,
+          onTap: () {
+            setState(() {});
 
-
-
-              });
-
-              // Navigator.pop(context,MaterialPageRoute(builder: (context)=>LoginScreen()));
-            },
-            child: Image.asset("assets/image/back.png")),
+            // Navigator.pop(context,MaterialPageRoute(builder: (context)=>LoginScreen()));
+          },
+          child: Image.asset("assets/image/back.png"),
+        ),
         centerTitle: true,
         title: Image.asset("assets/image/w_logo.png"),
         //title: Center(child: Text("Data"),) ,
@@ -42,42 +39,46 @@ class _LoginScreenState extends State<LoginScreen> {
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //Divider(thickness: 3, color: Colors.grey),
-        
-        
-        
-        
-        
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Divider(thickness: 3, color: Colors.grey),
+
+                  // Sign in OR Register
                   Row(
                     children: [
                       Expanded(
                         flex: 2,
-                        child: Column(
-                          spacing: 0,
-        
-                          children: [
-                            SizedBox(height: 21, width: 236),
-        
-                            Text(
-                              "Sign up",
-                              style: TextStyle(
-                                color: Color(0xff5F5F5F),
-                                fontWeight: FontWeight.w500,
-                                fontSize: 21,
+                        child: InkWell(
+                          onTap: () {
+                            setState(() => isSignIn = true);
+                          },
+                          child: Column(
+                            spacing: 0,
+
+                            children: [
+                              SizedBox(height: 21, width: 236),
+
+                              Text(
+                                "Sign up",
+                                style: TextStyle(
+                                  color: Color(0xff5F5F5F),
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 21,
+                                ),
                               ),
-                            ),
-                            SizedBox(height: 3, width: 179),
-                            Container(
-                              height: 3,
-                              width: 179,
-                              color: Color(0xffF4A758),
-                            ),
-                          ],
+                              SizedBox(height: 3, width: 179),
+                              Container(
+                                height: 3,
+                                width: 179,
+                                color: isSignIn
+                                    ? Color(0xffF4A758)
+                                    : Colors.grey,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       Expanded(
@@ -85,24 +86,27 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Column(
                           children: [
                             SizedBox(height: 21, width: 236),
-        
+
                             ///
                             /// Register Page Log IN
                             InkWell(
                               onTap: () {
                                 setState(() {
                                   isBlue = !isBlue;
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => LoginScreen(),
-                                    ),
-                                  );
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(
+                                  //     builder: (context) => LoginScreen(),
+                                  //   ),
+                                  // );
                                 });
                               },
-        
+
                               //// Register Now
                               child: InkWell(
+                                onTap: () {
+                                  setState(() => isSignIn = false);
+                                },
                                 focusColor: Colors.amber,
                                 // onTap: () {
                                 //   Navigator.push(
@@ -115,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 child: Text(
                                   "Register Now",
                                   style: TextStyle(
-                                    color: Color(0xff5F5F5F),
+
                                     fontSize: 21,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -123,14 +127,18 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             SizedBox(height: 3, width: 179),
-        
-                            Container(height: 3, width: 179, color: Colors.grey),
+
+                            Container(
+                              height: 3,
+                              width: 179,
+                              color:  ! isSignIn ? Colors.orange : Colors.grey,
+                            ),
                           ],
                         ),
                       ),
                     ],
                   ),
-        
+
                   //2nd part in cloumn
                   Padding(
                     padding: const EdgeInsets.only(top: 17, left: 29),
@@ -142,37 +150,47 @@ class _LoginScreenState extends State<LoginScreen> {
                           SizedBox(height: 29, width: 178),
                           Text(
                             "Welcome back!",
-                            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 22),
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 22,
+                            ),
                           ),
                           SizedBox(width: 18),
                           Text(
                             "Please enter your details to login",
-                            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
-        
+
                           SizedBox(width: 171, height: 21),
-        
+
                           Text(
                             "Phone Number",
-                            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                            ),
                           ),
-        
+
                           SizedBox(height: 16, width: 171),
                           Padding(
                             padding: const EdgeInsets.only(right: 16),
-        
+
                             child: TextFormField(
                               keyboardType: TextInputType.phone,
-                              validator: (v){
-                                if( v== null || v.isEmpty){
+                              validator: (v) {
+                                if (v == null || v.isEmpty) {
                                   return "Please Enter Number";
-                                }if (!RegExp(r'^01[3-9]\d{8}$').hasMatch(v)) {
+                                }
+                                if (!RegExp(r'^01[3-9]\d{8}$').hasMatch(v)) {
                                   return "Enter a valid Bangladeshi phone number";
                                 }
-        
+
                                 return null;
                               },
-        
+
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
@@ -182,17 +200,20 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                           ),
-        
+
                           //3nd part
                           SizedBox(width: 171, height: 21),
-        
+
                           Text(
                             "Password",
-                            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 17),
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 17,
+                            ),
                           ),
-        
+
                           SizedBox(height: 17, width: 171),
-        
+
                           Padding(
                             padding: const EdgeInsets.only(right: 16),
                             child: TextFormField(
@@ -201,22 +222,25 @@ class _LoginScreenState extends State<LoginScreen> {
                                 if (value == null || value.isEmpty) {
                                   return "Password required";
                                 }
-                                if (!RegExp(r'^(?=.*[A-Za-z])(?=.*\d).{8,}$').hasMatch(value)) {
+                                if (!RegExp(
+                                  r'^(?=.*[A-Za-z])(?=.*\d).{8,}$',
+                                ).hasMatch(value)) {
                                   return "Use letters & numbers (8+)";
                                 }
                                 return null;
                               },
-        
-        
+
                               decoration: InputDecoration(
                                 suffixIcon: IconButton(
                                   icon: Icon(
-                                    _obscure ? Icons.visibility_off : Icons.visibility,
+                                    _obscure
+                                        ? Icons.visibility_off
+                                        : Icons.visibility,
                                   ),
 
                                   onPressed: () {
                                     setState(() {
-                                      _obscure =   !_obscure;
+                                      _obscure = !_obscure;
                                     });
                                   },
                                 ),
@@ -227,7 +251,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   borderSide: BorderSide(color: Colors.grey),
                                   borderRadius: BorderRadius.circular(10),
                                 ),
-        
+
                                 focusColor: Colors.blueAccent,
                                 hintText: "***********",
                               ),
@@ -238,7 +262,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               horizontal: 20,
                               vertical: 20,
                             ),
-        
+
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
@@ -298,47 +322,49 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ],
                           ),
-        
+
                           //Google Sign in with google
                           Container(
                             height: 52,
                             width: 420,
-        
+
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               border: Border.all(width: 1),
-        
+
                               color: Color(0xffF4A7580F).withOpacity(0.12),
                             ),
                             child: Row(
-        
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                
-                                Image.asset("assets/image/google.png", height: 30, width: 30),
-        
+                                Image.asset(
+                                  "assets/image/google.png",
+                                  height: 30,
+                                  width: 30,
+                                ),
+
                                 SizedBox(width: 18),
-        
+
                                 Text(
                                   "Sig in with google",
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
-        
+
                             //child: Text("Sig in with google"),
                           ),
-        
+
                           ////...........Facebook Account
                           SizedBox(height: 35),
                           Container(
                             height: 52,
                             width: 420,
-        
+
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               border: Border.all(width: 1),
-        
+
                               color: Color(0xffF4A7580F).withOpacity(0.12),
                             ),
                             child: Row(
@@ -349,16 +375,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                   height: 30,
                                   width: 30,
                                 ),
-        
+
                                 SizedBox(width: 18),
-        
+
                                 Text(
                                   "Sig in with Facebook",
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
-        
+
                             //child: Text("Sig in with google"),
                           ),
                           SizedBox(
@@ -390,23 +416,18 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  ElevatedButton(onPressed: (){
-                    if(_formKey.currentState!.validate()){
-                      print("ok");
-                    }
-                  }, child: Text("Submit"))
+                  ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        print("ok");
+                      }
+                    },
+                    child: Text("Submit"),
+                  ),
                 ],
               ),
-        
-        
             ),
-        
-        
-        
-        
-        
           ],
-        
         ),
       ),
     );
