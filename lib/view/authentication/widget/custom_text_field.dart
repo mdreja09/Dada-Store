@@ -15,7 +15,7 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: nameC,
-      keyboardType: TextInputType.phone,
+
       validator: validator,
 
       decoration: InputDecoration(
