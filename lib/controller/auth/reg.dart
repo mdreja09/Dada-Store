@@ -12,11 +12,11 @@ class RegController {
         "address": "Dinajpur ",
         "password": "12345678",
       };
-      var reg = await http.post(uri);
-      if ( reg.statusCode == 201){
+      var reg = await http.post(uri, body: b);
+      if (reg.statusCode == 201){
         log("Success");
       }else if (reg.statusCode == 422 ){
-        log("Email OR Phone already teken");
+        log("Email OR Phone already taken");
       }
     } catch (r) {
       log("Error: $r");
