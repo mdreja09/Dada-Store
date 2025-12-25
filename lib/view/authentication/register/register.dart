@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:dada_ecommerce/view/authentication/widget/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -124,7 +127,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
                       child: CustomButton(text: 'Register',
                         onTap: () {
-                          if (_formKey.currentState!.validate())
+                          if (_formKey.currentState!.validate()){
+                            return ;
+                          }
                           var a = {
                             "name" : nameC.text,
                             "phone" : phoneC.text,
@@ -132,6 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             "address" : addressC.text,
                             "password" : passC.text
                           };
+                          log("======${jsonEncode(a)}=====");
 
                       }
 
