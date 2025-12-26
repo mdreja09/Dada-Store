@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'package:http/http.dart' as http;
 
@@ -12,7 +13,13 @@ class RegController {
         "address": "Dinajpur ",
         "password": "12345678",
       };
-      var reg = await http.post(uri, body: b);
+      var h = {
+        "Accept" : " application/json"
+      };
+      var reg = await http.post(uri, body: jsonEncode(b),headers: h);
+
+      log("${reg.statusCode}");
+
       if (reg.statusCode == 201){
         log("Success");
       }else if (reg.statusCode == 422 ){
