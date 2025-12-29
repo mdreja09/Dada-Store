@@ -25,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailC = TextEditingController();
   final TextEditingController addressC = TextEditingController();
   final TextEditingController passC = TextEditingController();
-  bool isLoading= false;
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
 
-                    SizedBox(height: 16, ),
+                    SizedBox(height: 16),
 
                     CustomTextField(
                       nameC: nameC,
@@ -124,39 +124,35 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(height: 15),
 
+                    isLoading == true
+                        ? Center(child: CircularProgressIndicator())
+                        : GestureDetector(
+                            child: CustomButton(
+                              text: 'Register',
+                              onTap: () async {
+                                if (_formKey.currentState!.validate()) {
+                                  var a = {
+                                    "name": nameC.text,
+                                    "phone": phoneC.text,
+                                    "email": emailC.text,
+                                    "address": addressC.text,
+                                    "password": passC.text,
+                                  };
 
-                    isLoading == true ? CircularProgressIndicator() :GestureDetector(
+                                  isLoading = true;
+                                  setState(() {});
+                                  log("======${jsonEncode(a)}=====");
+                                  bool status = await RegController()
+                                      .createAccountFun(data: a);
+                                  isLoading = false;
+                                  if (status == true) {
+                                    // Navigate
+                                  }
+                                }
+                              },
+                            ),
+                          ),
 
-                      child: CustomButton(text: 'Register',
-                        onTap: () async{
-                          if (_formKey.currentState!.validate()) {
-                            var a = {
-                              "name": nameC.text,
-                              "phone": phoneC.text,
-                              "email": emailC.text,
-                              "address": addressC.text,
-                              "password": passC.text
-
-                            };
-                            isLoading = true;
-                            setState(() {
-
-                            });
-                            log("======${jsonEncode(a)}=====");
-                            bool  status = await RegController().createAccountFun(data: a);
-                            isLoading =false;
-                            if ( status == true) {
-                              // Navigate
-                            }
-
-                          }
-                        }
-
-
-
-                        )
-
-                    ),
                     Row(
                       children: [
                         SizedBox(width: 100, height: 60),
@@ -279,7 +275,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-
-
-
-
