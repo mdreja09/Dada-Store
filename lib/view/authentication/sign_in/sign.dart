@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginRegister> {
                           SizedBox(height: 21, width: 236),
 
                           Text(
-                            "Sign up",
+                            "Register Now",
                             style: TextStyle(
                               color: Color(0xff5F5F5F),
                               fontWeight: FontWeight.w500,
@@ -111,7 +111,7 @@ class _LoginScreenState extends State<LoginRegister> {
                             focusColor: Colors.amber,
 
                             child: Text(
-                              "Register Now",
+                              "Sign In",
                               style: TextStyle(
                                 fontSize: 21,
                                 fontWeight: FontWeight.w500,
