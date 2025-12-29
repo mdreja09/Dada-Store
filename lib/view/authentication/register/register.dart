@@ -138,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               "password" : passC.text
                             };
                             log("======${jsonEncode(a)}=====");
-                            RegController().createAccountFun();
+                            RegController().createAccountFun(data: a) ;
 
 
 
