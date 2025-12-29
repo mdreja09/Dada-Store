@@ -25,6 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailC = TextEditingController();
   final TextEditingController addressC = TextEditingController();
   final TextEditingController passC = TextEditingController();
+  bool isLoading= false;
 
   @override
   Widget build(BuildContext context) {
@@ -124,10 +125,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(height: 15),
 
 
-                    GestureDetector(
+                    isLoading == true ? CircularProgressIndicator() :GestureDetector(
 
                       child: CustomButton(text: 'Register',
-                        onTap: () {
+                        onTap: () async{
                           if (_formKey.currentState!.validate()) {
                             var a = {
                               "name": nameC.text,
@@ -135,11 +136,22 @@ class _LoginScreenState extends State<LoginScreen> {
                               "email": emailC.text,
                               "address": addressC.text,
                               "password": passC.text
+
                             };
+                            isLoading = true;
+                            setState(() {
+
+                            });
                             log("======${jsonEncode(a)}=====");
-                            RegController().createAccountFun(data: a);
+                            bool  status = await RegController().createAccountFun(data: a);
+                            isLoading =false;
+                            if ( status == true) {
+                              // Navigate
+                            }
+
                           }
                         }
+
 
 
                         )
