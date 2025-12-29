@@ -128,22 +128,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
                       child: CustomButton(text: 'Register',
                         onTap: () {
-                          //if (_formKey.currentState!.validate()){
-
+                          if (_formKey.currentState!.validate()) {
                             var a = {
-                              "name" : nameC.text,
-                              "phone" : phoneC.text,
-                              "email" : emailC.text,
-                              "address" : addressC.text,
-                              "password" : passC.text
+                              "name": nameC.text,
+                              "phone": phoneC.text,
+                              "email": emailC.text,
+                              "address": addressC.text,
+                              "password": passC.text
                             };
                             log("======${jsonEncode(a)}=====");
-                            RegController().createAccountFun(data: a) ;
-
-
-
-
-                      }
+                            RegController().createAccountFun(data: a);
+                          }
+                        }
 
 
                         )
