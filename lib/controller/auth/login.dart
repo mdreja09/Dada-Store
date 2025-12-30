@@ -17,6 +17,7 @@ class LoginController{
     "Accept" : "application/json"
   };
   var res = await http.post(uri, body: d,headers: h);
+  log(" ${res.body}");
 
   } catch(error){
   log("error =  $error");
