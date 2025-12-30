@@ -1,10 +1,9 @@
 import 'package:dada_ecommerce/controller/auth/login.dart';
 import 'package:dada_ecommerce/view/authentication/register/register.dart';
 import 'package:dada_ecommerce/view/authentication/widget/CustomButton.dart';
+import 'package:dada_ecommerce/view/authentication/widget/custom_loading.dart';
 import 'package:dada_ecommerce/view/authentication/widget/custom_text_field.dart';
 import 'package:flutter/material.dart';
-
-
 
 class LoginRegister extends StatefulWidget {
   const LoginRegister({super.key});
@@ -20,8 +19,9 @@ class _LoginScreenState extends State<LoginRegister> {
   bool isSignIn = true; // 🔥 tab control
   bool _obscure = true; // 🔥 password visibility
   bool isBlue = true;
-  TextEditingController phoneC  = TextEditingController() ;
+  TextEditingController phoneC = TextEditingController();
   TextEditingController passC = TextEditingController();
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,28 +94,22 @@ class _LoginScreenState extends State<LoginRegister> {
 
                         /// Page Log IN
 
+                        //// Register Now
+                        InkWell(
+                          onTap: () {
+                            selected = 2;
+                            setState(() => isSignIn = false);
+                          },
+                          focusColor: Colors.amber,
 
-
-
-
-
-
-                          //// Register Now
-                          InkWell(
-                            onTap: () {
-                              selected = 2;
-                              setState(() => isSignIn = false);
-                            },
-                            focusColor: Colors.amber,
-
-                            child: Text(
-                              "Sign In",
-                              style: TextStyle(
-                                fontSize: 21,
-                                fontWeight: FontWeight.w500,
-                              ),
+                          child: Text(
+                            "Sign In",
+                            style: TextStyle(
+                              fontSize: 21,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
+                        ),
 
                         SizedBox(height: 3, width: 179),
 
@@ -177,12 +171,9 @@ class _LoginScreenState extends State<LoginRegister> {
                                 validator: (v) {
                                   if (v == null || v.isEmpty) {
                                     return "Please Enter Number";
+                                  } else {
+                                    return null;
                                   }
-                                  if (!RegExp(r'^01[3-9]\d{8}$').hasMatch(v)) {
-                                    return "Enter a valid Bangladeshi phone number";
-                                  }
-
-                                  return null;
                                 },
 
                                 decoration: InputDecoration(
@@ -208,7 +199,6 @@ class _LoginScreenState extends State<LoginRegister> {
 
                             SizedBox(height: 17, width: 171),
 
-
                             Padding(
                               padding: const EdgeInsets.only(right: 16),
                               child: TextFormField(
@@ -217,13 +207,9 @@ class _LoginScreenState extends State<LoginRegister> {
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return "Password required";
+                                  } else {
+                                    return null;
                                   }
-                                  if (!RegExp(
-                                    r'^(?=.*[A-Za-z])(?=.*\d).{8,}$',
-                                  ).hasMatch(value)) {
-                                    return "Use letters & numbers (8+)";
-                                  }
-                                  return null;
                                 },
 
                                 decoration: InputDecoration(
@@ -275,25 +261,25 @@ class _LoginScreenState extends State<LoginRegister> {
                             ),
                             //////////////////////////////
                             //////////////////////
-                            CustomButton(text: "Login",
-                              onTap: () async{
-                                if (!_formKey.currentState!.validate()) {
-                                  return;
-                                }
+                            isLoading == true
+                                ? CustomLoading()
+                                : CustomButton(
+                                    text: "Login",
+                                    onTap: () async {
+                                      if (!_formKey.currentState!.validate()) {
+                                        return;
+                                      }
+                                      isLoading = true;
+                                      setState(() {});
 
-                                await LoginController.login(
-                                  phone: phoneC.text,
-                                  pass: passC.text,
-                                );
-
-
-
-
-
-
-
-                            },
-                             ),
+                                      await LoginController.login(
+                                        phone: phoneC.text,
+                                        pass: passC.text,
+                                      );
+                                      isLoading = false;
+                                      setState(() {});
+                                    },
+                                  ),
                             Row(
                               children: [
                                 SizedBox(width: 100, height: 60),
