@@ -1,3 +1,4 @@
+import 'package:dada_ecommerce/controller/auth/login.dart';
 import 'package:dada_ecommerce/view/authentication/register/register.dart';
 import 'package:dada_ecommerce/view/authentication/widget/CustomButton.dart';
 import 'package:dada_ecommerce/view/authentication/widget/custom_text_field.dart';
@@ -92,21 +93,15 @@ class _LoginScreenState extends State<LoginRegister> {
                         SizedBox(height: 21, width: 236),
 
                         /// Page Log IN
-                        InkWell(
-                          onTap: () {
-                            setState(() {
-                              //isBlue = !isBlue;
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => LoginScreen(),
-                              //   ),
-                              // );
-                            });
-                          },
+
+
+
+
+
+
 
                           //// Register Now
-                          child: InkWell(
+                          InkWell(
                             onTap: () {
                               selected = 2;
                               setState(() => isSignIn = false);
@@ -121,7 +116,7 @@ class _LoginScreenState extends State<LoginRegister> {
                               ),
                             ),
                           ),
-                        ),
+
                         SizedBox(height: 3, width: 179),
 
                         Container(
@@ -281,8 +276,20 @@ class _LoginScreenState extends State<LoginRegister> {
                             //////////////////////////////
                             //////////////////////
                             CustomButton(text: "Login",
-                              onTap: (){
-                              if (_formKey.currentState!.validate());
+                              onTap: () async{
+                                if (!_formKey.currentState!.validate()) {
+                                  return;
+                                }
+
+                                await LoginController.login(
+                                  phone: phoneC.text,
+                                  pass: passC.text,
+                                );
+
+
+
+
+
 
 
                             },
@@ -401,16 +408,16 @@ class _LoginScreenState extends State<LoginRegister> {
                         ),
                 ),
               ),
-              Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      print("ok");
-                    }
-                  },
-                  child: Text("Submit"),
-                ),
-              ),
+              // Center(
+              //   child: ElevatedButton(
+              //     onPressed: () {
+              //       if (_formKey.currentState!.validate()) {
+              //         print("ok");
+              //       }
+              //     },
+              //     child: Text("Submit"),
+              //   ),
+              // ),
             ],
           ),
         ),
