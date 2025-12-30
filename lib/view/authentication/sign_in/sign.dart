@@ -1,5 +1,6 @@
 import 'package:dada_ecommerce/view/authentication/register/register.dart';
 import 'package:dada_ecommerce/view/authentication/widget/CustomButton.dart';
+import 'package:dada_ecommerce/view/authentication/widget/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
 
@@ -18,6 +19,8 @@ class _LoginScreenState extends State<LoginRegister> {
   bool isSignIn = true; // 🔥 tab control
   bool _obscure = true; // 🔥 password visibility
   bool isBlue = true;
+  TextEditingController phoneC  = TextEditingController() ;
+  TextEditingController passC = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,7 +91,7 @@ class _LoginScreenState extends State<LoginRegister> {
                       children: [
                         SizedBox(height: 21, width: 236),
 
-                        /// Register Page Log IN
+                        /// Page Log IN
                         InkWell(
                           onTap: () {
                             setState(() {
@@ -174,6 +177,7 @@ class _LoginScreenState extends State<LoginRegister> {
                               padding: const EdgeInsets.only(right: 16),
 
                               child: TextFormField(
+                                controller: phoneC,
                                 keyboardType: TextInputType.phone,
                                 validator: (v) {
                                   if (v == null || v.isEmpty) {
@@ -209,9 +213,11 @@ class _LoginScreenState extends State<LoginRegister> {
 
                             SizedBox(height: 17, width: 171),
 
+
                             Padding(
                               padding: const EdgeInsets.only(right: 16),
                               child: TextFormField(
+                                controller: passC,
                                 obscureText: _obscure,
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
