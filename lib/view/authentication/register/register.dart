@@ -161,7 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           width: 100,
                           decoration: BoxDecoration(color: Colors.grey),
                         ),
-                        Text("OR", style: TextStyle(fontSize: 18)),
+                        Text("OR", style: TextStyle(fontSize: 17)),
                         Container(
                           height: 2,
                           width: 100,
@@ -193,7 +193,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           SizedBox(width: 18),
 
                           Text(
-                            "Sig in with google",
+                            "Sig in with google,",
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -223,7 +223,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             width: 30,
                           ),
 
-                          SizedBox(width: 18),
+                          SizedBox(width: 19),
 
                           Text(
                             "Sig in with Facebook",
