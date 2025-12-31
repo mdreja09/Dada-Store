@@ -9,8 +9,8 @@ class CustomLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 52,
-      width: 420,
+      height: 50,
+      width: 421,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(width: 1),
