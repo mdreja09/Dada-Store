@@ -1,4 +1,8 @@
+import 'dart:developer';
+
+import 'package:dada_ecommerce/view/authentication/sign_in/sign.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -9,6 +13,15 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   autoNavigate() async{
+    FlutterSecureStorage storage = FlutterSecureStorage();
+    var t = await storage.read(key: 'token');
+    log("TTTT : $t");
+    if (t == null){
+      Navigator.push(context, MaterialPageRoute(builder: (c)=> LoginRegister()));
+    }else{
+      log("DATA Found $t");
+    }
+
     Future.delayed(Duration(seconds: 3));
 
   }
