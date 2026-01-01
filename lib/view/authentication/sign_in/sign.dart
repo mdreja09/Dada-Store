@@ -14,7 +14,7 @@ class LoginRegister extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginRegister> {
   final _formKey = GlobalKey<FormState>();
-  int selected = 1;
+  int selected = 2;
 
   bool isSignIn = true; // 🔥 tab control
   bool _obscure = true; // 🔥 password visibility
