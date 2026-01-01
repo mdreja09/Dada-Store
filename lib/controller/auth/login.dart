@@ -1,41 +1,47 @@
-
+import 'dart:convert';
 import 'dart:developer';
 
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
-  class LoginController{
+class LoginController {
+  static Future<void> login({
+    required String phone,
+    required String pass,
+  }) async {
+    try {
+      Uri uri = Uri.parse("https://b4.coderangon.com/api/login");
 
-    static Future <void> login({required String phone, required String pass}) async{
-  try{
-  Uri uri = Uri.parse("https://b4.coderangon.com/api/login");
+      var d = {"phone": "${phone}", "password": "${pass}"};
+      var h = {"Accept": "application/json"};
+      var res = await http.post(uri, body: d, headers: h);
+      log("${phone} $pass}");
 
-  var d = {
-    "phone": "01718608447",
-  "password": " pass"
+      log(" ${res.body}");
 
-  };
-  var h ={
-    "Accept" : "application/json"
-  };
-  var res = await http.post(uri, body: d,headers: h);
-  log("${phone } $pass}");
+      if (res.statusCode == 200) {
+        EasyLoading.showError(" Login Success");
 
-  log(" ${res.body}");
+        var data = jsonDecode(res.body)["token"];
 
-  if ( res.statusCode == 200){
+        log("${res.body}");
+        FlutterSecureStorage _storage = FlutterSecureStorage();
+        _storage.write(key: 'token', value: data);
 
-   EasyLoading.showError(" Login Success");
 
-    
-  }else if ( res.statusCode == 422 ){
-    EasyLoading.showError("Please enter phone and password");
-  }else {
-    EasyLoading.showError("Something wrong");
-  }
 
-  } catch(error){
-  log("error =  $error");
-  }
+
+
+
+        //log("${jsonDecode(res.body)["token"]}");
+      } else if (res.statusCode == 422) {
+        EasyLoading.showError("Please enter phone and password");
+      } else {
+        EasyLoading.showError("Something wrong");
+      }
+    } catch (error) {
+      log("error =  $error");
+    }
   }
 }
