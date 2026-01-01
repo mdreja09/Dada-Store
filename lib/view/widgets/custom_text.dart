@@ -6,7 +6,7 @@ class CustomTextWidget extends StatelessWidget {
   final int? maxLine;
   final double? fSize;
   final Color? color;
-  final FontWeight? fW;
+  final FontWeight?fW;
 
   @override
   Widget build(BuildContext context) {
