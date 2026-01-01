@@ -1,3 +1,4 @@
+import 'package:dada_ecommerce/view/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/custom_app_bar.dart';
@@ -8,43 +9,53 @@ class ProductScreen extends StatefulWidget {
   @override
   State<ProductScreen> createState() => _ProductScreenState();
 }
+
 class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    appBar: AppBar(
-      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
 
-      leading: Image.asset("assets/image/back.png"),
-      centerTitle: true,
-      title: Image.asset("assets/image/w_logo.png"),
-      //title: Center(child: Text("Data"),) ,
-      // title: Image.asset(height: 20, width: 120, "assets/image/w_logo.png"),
-    ),
+        leading: Image.asset("assets/image/back.png"),
+        centerTitle: true,
+        title: Image.asset("assets/image/w_logo.png"),
+        //title: Center(child: Text("Data"),) ,
+        // title: Image.asset(height: 20, width: 120, "assets/image/w_logo.png"),
+      ),
       body: GridView.builder(
         padding: EdgeInsetsGeometry.all(10),
 
         itemCount: 5,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-          itemBuilder: (context,index) => Card(
-            child: Column(
-              children: [
-                Container(
-                  height: 156,
-                  width: 173,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(10),
-                        topLeft: Radius.circular(10))
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 8,
+        ),
+
+        itemBuilder: (context, index) => Card(
+          child: Column(
+            children: [
+              Container(
+                height: 156,
+                width: 173,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(10),
+                    topLeft: Radius.circular(10),
                   ),
-
-                )
-              ],
-            ),
-          )),
-
+                ),
+                child: Image.asset(fit: BoxFit.fill, "assets/image/sari.png"),
+              ),
+              CustomTextWidget(
+                text: "Party Borkha Abaya Koliza",
+                fSize: 12,
+                fW: FontWeight.w500,
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
-
-
