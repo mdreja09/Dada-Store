@@ -21,6 +21,27 @@ class _ProductScreenState extends State<ProductScreen> {
       //title: Center(child: Text("Data"),) ,
       // title: Image.asset(height: 20, width: 120, "assets/image/w_logo.png"),
     ),
+      body: GridView.builder(
+        padding: EdgeInsetsGeometry.all(10),
+
+        itemCount: 5,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+          itemBuilder: (context,index) => Card(
+            child: Column(
+              children: [
+                Container(
+                  height: 156,
+                  width: 173,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(10),
+                        topLeft: Radius.circular(10))
+                  ),
+
+                )
+              ],
+            ),
+          )),
 
     );
   }
