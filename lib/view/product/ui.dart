@@ -28,6 +28,7 @@ class _ProductScreenState extends State<ProductScreen> {
 
         itemCount: 5,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          childAspectRatio: 0.9,
           crossAxisCount: 2,
           crossAxisSpacing: 10,
           mainAxisSpacing: 8,
@@ -49,24 +50,40 @@ class _ProductScreenState extends State<ProductScreen> {
               ),
               CustomTextWidget(
                 text: "Party Borkha Abaya Koliza",
-                fSize: 12,
+                fSize: 14,
                 fW: FontWeight.w500,
               ),
-              Row(
-                children: [
-                  CustomTextWidget(
-                    text: "2800",
-                    fW: FontWeight.w500,
-                    fSize: 14,
-                  ),
-                  CustomTextWidget(
-                    text: "3200",
-                    fSize: 14,
-                    fW: FontWeight.w500,
-                    tD: TextDecoration.lineThrough,
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.only(left: 25),
+                child: Row(
+
+                  children: [
+                    CustomTextWidget(
+                      text: "2800",
+                      fW: FontWeight.w500,
+                      fSize: 18,
+                    ),
+                    SizedBox(width: 5,),
+                    CustomTextWidget(
+                      text: "3200",
+                      fSize: 14,
+                      fW: FontWeight.w500,
+                      tD: TextDecoration.lineThrough,
+                    ),
+                  ],
+                ),
               ),
+              Container(
+                
+                height: 30,
+              width: 85,
+              decoration: BoxDecoration(
+                color: Colors.grey.shade300,
+                borderRadius: BorderRadius.circular(5)
+              ),
+                child: Center(child: Text("Add to Card",
+                  style: TextStyle(fontSize: 12,fontWeight: FontWeight.w500),),),
+              )
             ],
           ),
         ),
