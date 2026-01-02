@@ -21,9 +21,13 @@ class _ProductScreenState extends State<ProductScreen> {
   fetchData() async {
     isLoading = true;
     setState(() {});
+    await Future.delayed(Duration(seconds: 3));
     var productList = await ProductGetController().getProduct();
     log("   ${productList.length}");
     isLoading = false;
+    setState(() {
+
+    });
   }
 
   @override
@@ -45,19 +49,21 @@ class _ProductScreenState extends State<ProductScreen> {
         // title: Image.asset(height: 20, width: 120, "assets/image/w_logo.png"),
       ),
 
-      body: GridView.builder(
-        padding: EdgeInsetsGeometry.all(10),
+      body: isLoading == true
+          ? Center(child: CircularProgressIndicator())
+          : GridView.builder(
+              padding: EdgeInsetsGeometry.all(10),
 
-        itemCount: 5,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          childAspectRatio: 0.8,
-          crossAxisCount: 2,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 8,
-        ),
+              itemCount: ProductList.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                childAspectRatio: 0.8,
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 8,
+              ),
 
-        itemBuilder: (context, index) => ProductCardWidget(),
-      ),
+              itemBuilder: (context, index) => ProductCardWidget(data: ProductList[index],),
+            ),
     );
   }
 }

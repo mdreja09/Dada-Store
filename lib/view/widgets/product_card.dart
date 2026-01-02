@@ -1,14 +1,20 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'custom_text.dart';
 class ProductCardWidget extends StatelessWidget {
   const ProductCardWidget({
-    super.key,
+    super.key, this.data,
   });
+
+final dynamic data ;
 
   @override
   Widget build(BuildContext context) {
+    log("${data['title']}");
     return Stack(
+
       children: [
         Card(
           child: Column(
