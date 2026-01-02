@@ -59,7 +59,12 @@ class _ProductScreenState extends State<ProductScreen> {
                     fW: FontWeight.w500,
                     fSize: 14,
                   ),
-                 CustomTextWidget(text: "3200",fSize: 14,fW: FontWeight.w500,)
+                  CustomTextWidget(
+                    text: "3200",
+                    fSize: 14,
+                    fW: FontWeight.w500,
+                    tD: TextDecoration.lineThrough,
+                  ),
                 ],
               ),
             ],
