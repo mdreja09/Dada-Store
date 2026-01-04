@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginRegister> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Divider(thickness: 3, color: Colors.grey),
+              Divider(thickness: 4, color: Colors.grey),
 
               // Sign in OR Register
               Row(
