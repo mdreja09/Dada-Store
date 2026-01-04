@@ -66,7 +66,7 @@ class _LoginScreenState extends State<LoginRegister> {
                         spacing: 0,
 
                         children: [
-                          SizedBox(height: 21, width: 236),
+                          SizedBox(height: 21, width: 237),
 
                           Text(
                             "Register Now",
@@ -126,7 +126,7 @@ class _LoginScreenState extends State<LoginRegister> {
 
               // 2nd part in cloumn
               Padding(
-                padding: const EdgeInsets.only(top: 17, left: 29),
+                padding: const EdgeInsets.only(top: 18, left: 29),
                 child: Form(
                   key: _formKey,
                   child: selected == 1
