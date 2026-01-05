@@ -23,7 +23,7 @@ class _CustomTextWidgetState extends State<CustomTextWidget> {
         fontSize: widget.fSize ?? 20,
         fontWeight: widget.fW ??  FontWeight.normal,
         color: widget.color ?? Colors.black,
-        decoration: widget.tD ?? TextDecoration.lineThrough
+        decoration: widget.tD ?? TextDecoration.none
       ),
     );
   }
