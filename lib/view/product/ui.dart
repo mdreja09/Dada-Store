@@ -25,9 +25,7 @@ class _ProductScreenState extends State<ProductScreen> {
     ProductList = await ProductGetController().getProduct();
     log("   ${ProductList.length}");
     isLoading = false;
-    setState(() {
-
-    });
+    setState(() {});
   }
 
   @override
@@ -62,7 +60,8 @@ class _ProductScreenState extends State<ProductScreen> {
                 mainAxisSpacing: 8,
               ),
 
-              itemBuilder: (context, index) => ProductCardWidget(data: ProductList[index],),
+              itemBuilder: (context, index) =>
+                  ProductCardWidget(data: ProductList[index]),
             ),
     );
   }

@@ -3,35 +3,36 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 import 'custom_text.dart';
-class ProductCardWidget extends StatelessWidget {
-  const ProductCardWidget({
-    super.key, this.data,
-  });
 
-final dynamic data ;
+class ProductCardWidget extends StatelessWidget {
+  const ProductCardWidget({super.key, this.data});
+
+  final dynamic data;
 
   @override
   Widget build(BuildContext context) {
     log("${data['title']}");
     return Stack(
-
       children: [
         Card(
+
           child: Column(
             children: [
+
               Container(
                 height: 156,
-                width: 173,
+                width: 200,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(10),
                     topLeft: Radius.circular(10),
                   ),
                 ),
-                child: Image.asset(fit: BoxFit.fill, "assets/image/sari.png"),
+                child: Image.network
+                  ("https://b4.coderangon.com/storage/${data['image']}"),
               ),
               CustomTextWidget(
-                text: "Party Borkha Abaya Koliza",
+                text: data['title'],
                 fSize: 16,
                 fW: FontWeight.w500,
               ),
@@ -40,13 +41,13 @@ final dynamic data ;
                 child: Row(
                   children: [
                     CustomTextWidget(
-                      text: "2800",
-                      fW: FontWeight.w500,
+                      text: data['price'],
+                      fW: FontWeight.bold,
                       fSize: 18,
                     ),
                     SizedBox(width: 5),
                     CustomTextWidget(
-                      text: "3200",
+                      text: data['old_price'],
                       fSize: 14,
                       fW: FontWeight.w500,
                       tD: TextDecoration.lineThrough,
@@ -72,9 +73,7 @@ final dynamic data ;
             ],
           ),
         ),
-        Positioned(
-            left: 26,
-            child: Image.asset("assets/image/offer.png"))
+        Positioned(left: 26, child: Image.asset("assets/image/offer.png")),
       ],
     );
   }
