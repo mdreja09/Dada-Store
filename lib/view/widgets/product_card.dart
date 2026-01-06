@@ -29,7 +29,9 @@ class ProductCardWidget extends StatelessWidget {
                   ),
                 ),
                 child: Image.network
-                  ("https://b4.coderangon.com/storage/${data['image']}"),
+
+                  (fit: BoxFit.fitWidth,
+                    "https://b4.coderangon.com/storage/${data['image']}"),
               ),
               CustomTextWidget(
                 text: data['title'],
@@ -65,7 +67,7 @@ class ProductCardWidget extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    "Add to Card",
+                    "Add to Cart",
                     style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
                   ),
                 ),
