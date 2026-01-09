@@ -67,7 +67,7 @@ class ProductCardWidget extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    "Add to Cart",
+                    "_Add to Card_",
                     style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
                   ),
                 ),
