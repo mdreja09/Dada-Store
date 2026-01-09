@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:dada_ecommerce/controller/auth/login.dart';
 import 'package:dada_ecommerce/view/authentication/register/register.dart';
 import 'package:dada_ecommerce/view/authentication/widget/CustomButton.dart';
 import 'package:dada_ecommerce/view/authentication/widget/custom_loading.dart';
 import 'package:dada_ecommerce/view/authentication/widget/custom_text_field.dart';
+import 'package:dada_ecommerce/view/product/ui.dart';
 import 'package:flutter/material.dart';
 
 class LoginRegister extends StatefulWidget {
@@ -276,8 +279,13 @@ class _LoginScreenState extends State<LoginRegister> {
                                         phone: phoneC.text,
                                         pass: passC.text,
                                       );
+                                     // log("=======${status}========");
+
                                       isLoading = false;
                                       setState(() {});
+                                      // if (status == true){
+                                      //   Navigator.pushReplacement(context, MaterialPageRoute(builder: (c)=>ProductScreen()));
+                                      // }
                                     },
                                   ),
                             Row(

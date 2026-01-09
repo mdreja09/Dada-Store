@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:ffi';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
@@ -27,15 +28,19 @@ class LoginController {
         FlutterSecureStorage storage = FlutterSecureStorage();
         storage.write(key: 'token', value: data);
         EasyLoading.showError(" Login Success");
+        // return "true" ;
 
         //log("${jsonDecode(res.body)["token"]}");
       } else if (res.statusCode == 422) {
         EasyLoading.showError("Please enter phone and password");
+        //return "false";
       } else {
         EasyLoading.showError("Something wrong");
+        //return "false";
       }
     } catch (error) {
       log("error =  $error");
     }
+    //return "false";
   }
 }

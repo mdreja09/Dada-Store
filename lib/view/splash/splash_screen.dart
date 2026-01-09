@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(Duration(seconds: 3));
     FlutterSecureStorage storage = FlutterSecureStorage();
     var t = await storage.read(key: 'token');
-    log("TTTT : $t");
+    log("tttttttt : $t");
 
     if (t == null){
       Navigator.push(context, MaterialPageRoute(builder: (c)=> LoginRegister()));
@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.push(context, MaterialPageRoute(builder: (c)=> ProductScreen()));
     }
 
-   // Future.delayed(Duration(seconds: 3));
+   Future.delayed(Duration(seconds: 3));
 
   }
   @override
