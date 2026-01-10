@@ -1,9 +1,9 @@
 
 
 
-import 'package:dada_ecommerce/view/authentication/register/register.dart';
-import 'package:dada_ecommerce/view/authentication/sign_in/sign.dart';
-import 'package:dada_ecommerce/view/splash/splash_screen.dart';
+
+import 'package:dada_ecommerce/view/product_details/ui.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       builder: EasyLoading.init(),
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: ProductDetails(),
     );
   }
 }
