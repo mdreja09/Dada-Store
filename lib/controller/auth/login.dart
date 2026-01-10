@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class LoginController {
-  static Future<void> login({
+  static Future<bool> login({
     required String phone,
     required String pass,
   }) async {
@@ -27,8 +27,8 @@ class LoginController {
 
         FlutterSecureStorage storage = FlutterSecureStorage();
         storage.write(key: 'token', value: data);
-        EasyLoading.showError(" Login Success");
-        // return "true" ;
+        EasyLoading.showSuccess(" Login Success");
+        return true ;
 
         //log("${jsonDecode(res.body)["token"]}");
       } else if (res.statusCode == 422) {
@@ -36,11 +36,11 @@ class LoginController {
         //return "false";
       } else {
         EasyLoading.showError("Something wrong");
-        //return "false";
+        return false;
       }
     } catch (error) {
       log("error =  $error");
     }
-    //return "false";
+    return false ;
   }
 }

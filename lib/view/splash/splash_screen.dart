@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (t == null){
       Navigator.push(context, MaterialPageRoute(builder: (c)=> LoginRegister()));
     }else{
-      Navigator.push(context, MaterialPageRoute(builder: (c)=> ProductScreen()));
+      Navigator.push(context, MaterialPageRoute(builder: (c)=> LoginRegister()));
     }
 
    Future.delayed(Duration(seconds: 3));
