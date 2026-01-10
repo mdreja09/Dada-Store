@@ -32,6 +32,7 @@ class _LoginScreenState extends State<LoginRegister> {
       onTap: (){
         FocusScopeNode a = FocusScope.of(context);
         if ( a.hasPrimaryFocus != true){
+
           a.unfocus();
         }
       },
