@@ -11,23 +11,43 @@ class ProductDetails extends StatefulWidget {
 
 class _ProductDetailsState extends State<ProductDetails> {
   List<String> pl = [
+
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt-5FfM5yht0jMTYezm51vby6HxOU_XJ3gIw&s",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6u0FZEikQ-PM-bu4mTtTZ95W8kFz_nrmM2A&s",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlc19Yvl43P9frY2f4zNl5_C45p66uG9HVKQ&s"
-] ; @override
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlc19Yvl43P9frY2f4zNl5_C45p66uG9HVKQ&s",
+  ];
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey,
-        title: Center(child: Text("Product Details"),),actions: [
-          Icon(Icons.shopping_bag_outlined),
-         Padding(
-           padding: const EdgeInsets.only(right: 20),
-           child: Card(color: Colors.red,child: Image.asset("assets/image/shoping.png"),),
-         )
+        backgroundColor: Color(0xffFFFFFF),
+        title: Center(child: Text("Product Details")),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Stack(
+              children: [
+                Positioned(
+                  child: Card(
+                    color: Color(0xffF6F6F6),
+                    child: Card(child: Image.asset("assets/image/shop1.png")),
+                  ),
+                ),
+                Positioned(
+                  right: 5,
 
-      ],
+                  child: Container(
+                    height: 13,
+                    width: 13,
+                    color: Color(0xffF4A758),
 
+                    child: Image.asset("assets/image/shoping.png"),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -48,16 +68,56 @@ class _ProductDetailsState extends State<ProductDetails> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.fitWidth,
-                          image: NetworkImage("${i}")),
+                        image: NetworkImage("${i}"),
+                      ),
                     ),
-                    //child: Text('text $i', style: TextStyle(fontSize: 16.0)),
-                  );
+                   );
+
                 },
               );
             }).toList(),
           ),
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+
+                Row(
+
+                  children: [
+
+                    Text("Party Borkha Abaya Black",style:
+                    TextStyle(fontSize: 24 ),
+                    ),
+                    Container(
+
+                      
+                      height: 43,
+                      width: 43,
+                      decoration: BoxDecoration(
+                        color: Color(0xffF6F6F6),
+                        borderRadius: BorderRadius.circular(20),
+
+                        
+                      ),child: Icon(
+                      Icons.favorite,color: Colors.red,),
+                      
+                    )
+
+
+                  ],
+
+
+                ),
+
+              ],
+            ),
+          )
         ],
+
       ),
+
     );
   }
 }
