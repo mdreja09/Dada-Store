@@ -87,7 +87,7 @@ class _ProductDetailsState extends State<ProductDetails> {
 
                   children: [
 
-                    Text("Party Borkha Abaya Black",style:
+                    Text("Paty Borkha Abaya Black",style:
                     TextStyle(fontSize: 24 ),
                     ),
                     Container(
