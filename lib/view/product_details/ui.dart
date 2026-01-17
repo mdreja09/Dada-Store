@@ -79,14 +79,19 @@ class _ProductDetailsState extends State<ProductDetails> {
           ),
 
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                   children: [
-                    CustomTextWidget(text: 'Paly Brkha Abaya Black',fSize: 22,fW: FontWeight.w700,),
+                    CustomTextWidget(
+                      text: 'Party Borkha Abaya Black',
+                      fSize: 22,
+                      fW: FontWeight.w700,
+                    ),
                     Container(
                       height: 43,
                       width: 43,
@@ -98,13 +103,28 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                   ],
                 ),
+                CustomTextWidget(text: "Party Abaya"),
+                Row(
+                  children: [
+                    CustomTextWidget(
+                      text: "2800",
+                      fSize: 18,
+                      fW: FontWeight.w600,
+                    ),
+                    SizedBox(width: 10),
+                    CustomTextWidget(
+                      text: "3200",
+                      tD: TextDecoration.lineThrough,
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
+
+          //CustomTextWidget(text:"Party Abaya")
         ],
       ),
     );
   }
 }
-
-

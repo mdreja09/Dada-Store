@@ -10,6 +10,8 @@ class CustomTextWidget extends StatelessWidget {
     this.fontStyle,
     this.maxLines,
     this.textAlign,
+    this.lineThrough,
+
   });
 
   /// Required
@@ -22,7 +24,7 @@ class CustomTextWidget extends StatelessWidget {
   final FontStyle? fontStyle;
   final int? maxLines;
   final TextAlign? textAlign;
-
+final TextDecoration ?lineThrough;
   @override
   Widget build(BuildContext context) {
     return Text(
@@ -34,6 +36,11 @@ class CustomTextWidget extends StatelessWidget {
         fontWeight: fontWeight ?? FontWeight.normal,
         fontSize: fontSize ?? 14,
         fontStyle: fontStyle ?? FontStyle.normal,
+        decoration: TextDecoration.none
+
+
+
+
       ),
     );
   }
