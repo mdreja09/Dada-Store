@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dada_ecommerce/view/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/custom_text.dart';
+
 class ProductDetails extends StatefulWidget {
   const ProductDetails({super.key});
 
@@ -11,7 +13,6 @@ class ProductDetails extends StatefulWidget {
 
 class _ProductDetailsState extends State<ProductDetails> {
   List<String> pl = [
-
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt-5FfM5yht0jMTYezm51vby6HxOU_XJ3gIw&s",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6u0FZEikQ-PM-bu4mTtTZ95W8kFz_nrmM2A&s",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlc19Yvl43P9frY2f4zNl5_C45p66uG9HVKQ&s",
@@ -71,8 +72,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                         image: NetworkImage("${i}"),
                       ),
                     ),
-                   );
-
+                  );
                 },
               );
             }).toList(),
@@ -82,42 +82,29 @@ class _ProductDetailsState extends State<ProductDetails> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                   children: [
-
-                    Text("Paty Borkha Abaya Black",style:
-                    TextStyle(fontSize: 24 ),
-                    ),
+                    CustomTextWidget(text: 'Paly Brkha Abaya Black',fSize: 22,fW: FontWeight.w700,),
                     Container(
-
-                      
                       height: 43,
                       width: 43,
                       decoration: BoxDecoration(
                         color: Color(0xffF6F6F6),
                         borderRadius: BorderRadius.circular(20),
-
-                        
-                      ),child: Icon(
-                      Icons.favorite,color: Colors.red,),
-                      
-                    )
-
-
+                      ),
+                      child: Icon(Icons.favorite, color: Colors.red),
+                    ),
                   ],
-
-
                 ),
-
               ],
             ),
-          )
+          ),
         ],
-
       ),
-
     );
   }
 }
+
+
