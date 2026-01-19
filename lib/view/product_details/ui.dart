@@ -1,7 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dada_ecommerce/view/product_details/widget/ColorContainer.dart';
 import 'package:dada_ecommerce/view/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/SizeContainer.dart';
 import '../widgets/custom_text.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -136,70 +138,11 @@ class _ProductDetailsState extends State<ProductDetails> {
                 ),
                 SizedBox(height: 15,),
 
-                Row(
-                  children: [
-                    Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(13),
-
-                          border: Border.all(color: Color(0xffFF8900),width: 3)
-
-                      ),
-                    ),
-                    SizedBox(width: 10,),
-                    Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(13),
-
-                          //border: Border.all(color: Color(0xffFF8900),width: 3)
-
-                      ),
-                    ),
-                    SizedBox(width: 13,),
-                    Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(13),
-
-                         // border: Border.all(color: Color(0xffFF8900),width: 3)
-
-                      ),
-                    ),
-                    SizedBox(width: 13,),
-                    Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                          color: Color(0xff800000),
-                          borderRadius: BorderRadius.circular(13),
-
-                         // border: Border.all(color: Color(0xffFF8900),width: 3)
-
-                      ),
-                    ),
-                    SizedBox(width: 13,),
-                    Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                          color: Color(0xff5D838C),
-                          borderRadius: BorderRadius.circular(13),
-
-
-                      ),
-                    ),
-
-                  ],
-                ),
+                // Color Container
+                ColorContainerWidget(),
                 SizedBox(height: 30),
+
+                // Size : 32
                 Row(
                   children: [
                     CustomTextWidget(text: " Size :    ",
@@ -209,84 +152,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ],
                 ),
                 SizedBox(height: 15),
-                Row(
-                  children: [
-                    Container(
-                      height: 38,
-                      width: 52,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(13),
-                          border: Border.all(width: 3,color: Color(0xff0000001A))
-
-
-                      ),child: Center(
-                      child: CustomTextWidget(text: "32",fW: FontWeight.w400,),
-                    ),
-
-                    ),
-                    SizedBox(width: 15),
-                    Container(
-                      height: 38,
-                      width: 52,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(13),
-                          border: Border.all(width: 3,color: Color(0xff0000001A))
-
-
-                      ),child: Center(
-                      child: CustomTextWidget(text: "32",fW: FontWeight.w400,),
-                    ),
-
-                    ),
-                    SizedBox(width: 15),
-                    Container(
-                      height: 38,
-                      width: 52,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(13),
-                          border: Border.all(width: 3,color: Color(0xff0000001A))
-
-
-                      ),child: Center(
-                      child: CustomTextWidget(text: "32",fW: FontWeight.w400,),
-                    ),
-
-                    ),
-                    SizedBox(width: 15),
-                    Container(
-                      height: 38,
-                      width: 52,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(13),
-                          border: Border.all(width: 3,color: Color(0xff0000001A))
-
-
-                      ),child: Center(
-                      child: CustomTextWidget(text: "32",fW: FontWeight.w400,),
-                    ),
-
-                    ),
-                    SizedBox(width: 15),
-                    Container(
-                      height: 38,
-                      width: 52,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(13),
-                          border: Border.all(width: 3,color: Color(0xff0000001A))
-
-
-                      ),child: Center(
-                      child: CustomTextWidget(text: "32",fW: FontWeight.w400,),
-                    ),
-
-                    ),
-                  ],
-                )
+                // Conatainer Size : 34, 36, 38
+                SizeContainer()
 
 
               ],
@@ -299,3 +166,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     );
   }
 }
+
+
+
+
