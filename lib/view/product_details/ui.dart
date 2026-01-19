@@ -1,4 +1,8 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dada_ecommerce/controller/auth/product_details.dart';
 import 'package:dada_ecommerce/view/product_details/widget/ColorContainer.dart';
 import 'package:dada_ecommerce/view/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +23,22 @@ class _ProductDetailsState extends State<ProductDetails> {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6u0FZEikQ-PM-bu4mTtTZ95W8kFz_nrmM2A&s",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlc19Yvl43P9frY2f4zNl5_C45p66uG9HVKQ&s",
   ];
+   Map data = {};
+   fetchData ()async{
+  data = await GetProductDetails().getData();
+  log("Data : ($data)");
+}
+
+   @override
+  void initState() {
+     fetchData();
+    super.initState();
+  }
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,11 +125,47 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                   ],
                 ),
-                CustomTextWidget(text: "Party Abaya"),
                 Row(
                   children: [
+                    CustomTextWidget(text: "SKU :"),
+                    CustomTextWidget(text: "API- SPI MESH")
+                  ],
+                ),
+                Row(
+                  children: [
+                    CustomTextWidget(text: "Brand"),
+                    CustomTextWidget(text: " Active Cay")
+                  ],
+                ),
+                Row(
+                  children: [
+                    CustomTextWidget(text: "Category :"),
+                    CustomTextWidget(text: " Party Abaya"),
+                    
+                  ],
+                ),
+                Row(
+                  children: [
+                    CustomTextWidget(text: "Stock :"),
+                    CustomTextWidget(text: "550 PCS ")
+                    
+                  ],
+                ),
+                Row(
+                  children: [
+                    Icon(Icons.star,color: Colors.yellow,),
+                    Icon(Icons.star,color: Colors.yellow,),
+                    Icon(Icons.star,color: Colors.yellow,),
+                    Icon(Icons.star,color: Colors.yellow,),
+
+                    CustomTextWidget(text: "(102 review)")
+                  ],
+                )
+
+                ,Row(
+                  children: [
                     CustomTextWidget(
-                      text: "2800",
+                      text: "Price : 2800",
                       fSize: 22,
                       fW: FontWeight.w600,
                     ),
@@ -117,26 +173,27 @@ class _ProductDetailsState extends State<ProductDetails> {
                     CustomTextWidget(
                       text: "3200",
                       tD: TextDecoration.lineThrough,
-
                     ),
-
                   ],
-                  
                 ),
-                SizedBox(height: 20,),
+                SizedBox(height: 20),
                 Row(
                   children: [
-                    CustomTextWidget(text: "Color :",
-                      fW: FontWeight.w600,fSize: 22,),
+                    CustomTextWidget(
+                      text: "Color :",
+                      fW: FontWeight.w600,
+                      fSize: 22,
+                    ),
                     SizedBox(width: 15),
-                    CustomTextWidget(text: "Black",
-                      fW: FontWeight.w400,fSize: 18,
-                      color: Colors.grey,)
-
-
+                    CustomTextWidget(
+                      text: "Black",
+                      fW: FontWeight.w400,
+                      fSize: 18,
+                      color: Colors.grey,
+                    ),
                   ],
                 ),
-                SizedBox(height: 15,),
+                SizedBox(height: 15),
 
                 // Color Container
                 ColorContainerWidget(),
@@ -145,16 +202,119 @@ class _ProductDetailsState extends State<ProductDetails> {
                 // Size : 32
                 Row(
                   children: [
-                    CustomTextWidget(text: " Size :    ",
-                      fW: FontWeight.w600,fSize: 22,),
-                    CustomTextWidget(text: "32",color: Colors.grey,)
-
+                    CustomTextWidget(
+                      text: " Size :    ",
+                      fW: FontWeight.w600,
+                      fSize: 22,
+                    ),
+                    CustomTextWidget(text: "32", color: Colors.grey),
                   ],
                 ),
                 SizedBox(height: 15),
-                // Conatainer Size : 34, 36, 38
-                SizeContainer()
 
+                // Conatainer Size : 34, 36, 38
+                Row(
+                  children: [
+                    Container(
+                      height: 38,
+                      width: 52,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(13),
+                        border: Border.all(
+                          width: 3,
+                          color: Color(0xff0000001A),
+                        ),
+                      ),
+                      child: Center(
+                        child: CustomTextWidget(
+                          text: "34",
+                          fW: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 15),
+                    Container(
+                      height: 38,
+                      width: 52,
+                      decoration: BoxDecoration(
+                        color: Colors.orange,
+                        borderRadius: BorderRadius.circular(13),
+                        border: Border.all(
+                          width: 3,
+                          color: Color(0xff0000001A),
+                        ),
+                      ),
+                      child: Center(
+                        child: CustomTextWidget(
+                          text: "36",
+                          fW: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 15),
+                    Container(
+                      height: 38,
+                      width: 52,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(13),
+                        border: Border.all(
+                          width: 3,
+                          color: Color(0xff0000001A),
+                        ),
+                      ),
+                      child: Center(
+                        child: CustomTextWidget(
+                          text: "38",
+                          fW: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 15),
+                    Container(
+                      height: 38,
+                      width: 52,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(13),
+                        border: Border.all(
+                          width: 3,
+                          color: Color(0xff0000001A),
+                        ),
+                      ),
+                      child: Center(
+                        child: CustomTextWidget(
+                          text: "40",
+                          fW: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 15),
+                    Container(
+                      height: 38,
+                      width: 52,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(13),
+                        border: Border.all(
+                          width: 3,
+                          color: Color(0xff0000001A),
+                        ),
+                      ),
+                      child: Center(
+                        child: CustomTextWidget(
+                          text: "42",
+                          fW: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ],
+
+                ),
+                SizedBox(height: 20,),
+                CustomTextWidget(text: "Details"),
+                CustomTextWidget(text: "Details"),
 
               ],
             ),
@@ -166,7 +326,3 @@ class _ProductDetailsState extends State<ProductDetails> {
     );
   }
 }
-
-
-
-
