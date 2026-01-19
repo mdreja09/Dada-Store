@@ -108,16 +108,187 @@ class _ProductDetailsState extends State<ProductDetails> {
                   children: [
                     CustomTextWidget(
                       text: "2800",
-                      fSize: 18,
+                      fSize: 22,
                       fW: FontWeight.w600,
                     ),
                     SizedBox(width: 10),
                     CustomTextWidget(
                       text: "3200",
                       tD: TextDecoration.lineThrough,
+
                     ),
+
+                  ],
+                  
+                ),
+                SizedBox(height: 20,),
+                Row(
+                  children: [
+                    CustomTextWidget(text: "Color :",
+                      fW: FontWeight.w600,fSize: 22,),
+                    SizedBox(width: 15),
+                    CustomTextWidget(text: "Black",
+                      fW: FontWeight.w400,fSize: 18,
+                      color: Colors.grey,)
+
+
                   ],
                 ),
+                SizedBox(height: 15,),
+
+                Row(
+                  children: [
+                    Container(
+                      height: 30,
+                      width: 30,
+                      decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(13),
+
+                          border: Border.all(color: Color(0xffFF8900),width: 3)
+
+                      ),
+                    ),
+                    SizedBox(width: 10,),
+                    Container(
+                      height: 30,
+                      width: 30,
+                      decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(13),
+
+                          //border: Border.all(color: Color(0xffFF8900),width: 3)
+
+                      ),
+                    ),
+                    SizedBox(width: 13,),
+                    Container(
+                      height: 30,
+                      width: 30,
+                      decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(13),
+
+                         // border: Border.all(color: Color(0xffFF8900),width: 3)
+
+                      ),
+                    ),
+                    SizedBox(width: 13,),
+                    Container(
+                      height: 30,
+                      width: 30,
+                      decoration: BoxDecoration(
+                          color: Color(0xff800000),
+                          borderRadius: BorderRadius.circular(13),
+
+                         // border: Border.all(color: Color(0xffFF8900),width: 3)
+
+                      ),
+                    ),
+                    SizedBox(width: 13,),
+                    Container(
+                      height: 30,
+                      width: 30,
+                      decoration: BoxDecoration(
+                          color: Color(0xff5D838C),
+                          borderRadius: BorderRadius.circular(13),
+
+
+                      ),
+                    ),
+
+                  ],
+                ),
+                SizedBox(height: 30),
+                Row(
+                  children: [
+                    CustomTextWidget(text: " Size :    ",
+                      fW: FontWeight.w600,fSize: 22,),
+                    CustomTextWidget(text: "32",color: Colors.grey,)
+
+                  ],
+                ),
+                SizedBox(height: 15),
+                Row(
+                  children: [
+                    Container(
+                      height: 38,
+                      width: 52,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(13),
+                          border: Border.all(width: 3,color: Color(0xff0000001A))
+
+
+                      ),child: Center(
+                      child: CustomTextWidget(text: "32",fW: FontWeight.w400,),
+                    ),
+
+                    ),
+                    SizedBox(width: 15),
+                    Container(
+                      height: 38,
+                      width: 52,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(13),
+                          border: Border.all(width: 3,color: Color(0xff0000001A))
+
+
+                      ),child: Center(
+                      child: CustomTextWidget(text: "32",fW: FontWeight.w400,),
+                    ),
+
+                    ),
+                    SizedBox(width: 15),
+                    Container(
+                      height: 38,
+                      width: 52,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(13),
+                          border: Border.all(width: 3,color: Color(0xff0000001A))
+
+
+                      ),child: Center(
+                      child: CustomTextWidget(text: "32",fW: FontWeight.w400,),
+                    ),
+
+                    ),
+                    SizedBox(width: 15),
+                    Container(
+                      height: 38,
+                      width: 52,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(13),
+                          border: Border.all(width: 3,color: Color(0xff0000001A))
+
+
+                      ),child: Center(
+                      child: CustomTextWidget(text: "32",fW: FontWeight.w400,),
+                    ),
+
+                    ),
+                    SizedBox(width: 15),
+                    Container(
+                      height: 38,
+                      width: 52,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(13),
+                          border: Border.all(width: 3,color: Color(0xff0000001A))
+
+
+                      ),child: Center(
+                      child: CustomTextWidget(text: "32",fW: FontWeight.w400,),
+                    ),
+
+                    ),
+                  ],
+                )
+
+
               ],
             ),
           ),
