@@ -3,26 +3,19 @@ import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 
-class GetProductDetails{
-  Future<Map> getData() async{
-    try{
-      Uri uri = Uri.parse("https://b4.coderangon.com/api/products");
+class GetProductDetails {
+  Future<Map> getData() async {
+    try {
+      Uri uri = Uri.parse("https://b4.coderangon.com/api/products/1");
       var res = await http.get(uri);
-      if (res.statusCode == 200){
+      if (res.statusCode == 200) {
         var jsonData = jsonDecode(res.body);
 
-        return jsonData ['data'];
-
-
+        return jsonData['data'];
       }
-
-
-    }catch(e){
+    } catch (e) {
       log("Error : $e");
     }
-return {};
-
+    return {};
   }
-
-
 }

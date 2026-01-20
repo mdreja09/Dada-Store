@@ -26,18 +26,21 @@ class _ProductDetailsState extends State<ProductDetails> {
    Map data = {};
 
    fetchData ()async{
+
   data = await GetProductDetails().getData();
  log("====Data : $data");
+ setState(() {
+
+ });
 }
 
 
-   @override
+ @override
   void initState() {
-     fetchData();
+    // TODO: implement initState
     super.initState();
-     fetchData();
+    fetchData();
   }
-
 
 
 
@@ -113,7 +116,7 @@ class _ProductDetailsState extends State<ProductDetails> {
 
                   children: [
                     CustomTextWidget(
-                      text: 'Party Borkha Abaya Black',
+                      text: "${data["title"]}",
                       fSize: 22,
                       fW: FontWeight.w700,
                     ),
@@ -131,26 +134,26 @@ class _ProductDetailsState extends State<ProductDetails> {
                 Row(
                   children: [
                     CustomTextWidget(text: "SKU :"),
-                    CustomTextWidget(text: "API- SPI MESH")
+                    CustomTextWidget(text: "${data["sku"]}")
                   ],
                 ),
                 Row(
                   children: [
-                    CustomTextWidget(text: "Brand"),
-                    CustomTextWidget(text: " Active Cay")
+                    CustomTextWidget(text: "Brand  : "),
+                    CustomTextWidget(text: "${data["brand"]}")
                   ],
                 ),
                 Row(
                   children: [
-                    CustomTextWidget(text: "Category :"),
-                    CustomTextWidget(text: " Party Abaya"),
+                    CustomTextWidget(text: "Category  : "),
+                    CustomTextWidget(text: "${data["category"]}"),
                     
                   ],
                 ),
                 Row(
                   children: [
-                    CustomTextWidget(text: "Stock :"),
-                    CustomTextWidget(text: "550 PCS ")
+                    CustomTextWidget(text: "Stock :  "),
+                    CustomTextWidget(text: "${data["stock"]}")
                     
                   ],
                 ),
@@ -160,21 +163,22 @@ class _ProductDetailsState extends State<ProductDetails> {
                     Icon(Icons.star,color: Colors.yellow,),
                     Icon(Icons.star,color: Colors.yellow,),
                     Icon(Icons.star,color: Colors.yellow,),
+                    SizedBox(width: 10,),
 
-                    CustomTextWidget(text: "(102 review)")
+                    CustomTextWidget(text: "${data[  "rating"]}")
                   ],
                 )
 
                 ,Row(
                   children: [
                     CustomTextWidget(
-                      text: "Price : 2800",
+                      text: "Price :  " "${data["price"]}",
                       fSize: 22,
                       fW: FontWeight.w600,
                     ),
                     SizedBox(width: 10),
                     CustomTextWidget(
-                      text: "3200",
+                      text: "${data["old_price"]}",
                       tD: TextDecoration.lineThrough,
                     ),
                   ],
