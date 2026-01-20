@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:dada_ecommerce/view/product_details/ui.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_text.dart';
@@ -14,7 +15,8 @@ class ProductCardWidget extends StatelessWidget {
     log("${data['title']}");
     return InkWell(
       onTap: (){
-        log("___________");
+        log("______Data : ${data['id']}_____");
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductDetails(pId: data['id'],)));
       },
       child: Stack(
         children: [
@@ -22,6 +24,7 @@ class ProductCardWidget extends StatelessWidget {
 
             child: Column(
               children: [
+
 
                 Container(
                   height: 156,

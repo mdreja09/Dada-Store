@@ -16,7 +16,8 @@ import '../widgets/SizeContainer.dart';
 import '../widgets/custom_text.dart';
 
 class ProductDetails extends StatefulWidget {
-  const ProductDetails({super.key});
+  const ProductDetails({super.key, required this.pId});
+  final int pId ;
 
   @override
   State<ProductDetails> createState() => _ProductDetailsState();
@@ -28,7 +29,7 @@ class _ProductDetailsState extends State<ProductDetails> {
   Map data = {};
 
   fetchData() async {
-    data = await GetProductDetails().getData(id: 14);
+    data = await GetProductDetails().getData(id: widget.pId);
     if (data.isNotEmpty) {
       for (var i in data["gallery"]) {
         imgList.add(i);
