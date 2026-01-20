@@ -24,15 +24,18 @@ class _ProductDetailsState extends State<ProductDetails> {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlc19Yvl43P9frY2f4zNl5_C45p66uG9HVKQ&s",
   ];
    Map data = {};
+
    fetchData ()async{
   data = await GetProductDetails().getData();
-  log("Data : ($data)");
+ log("====Data : $data");
 }
+
 
    @override
   void initState() {
      fetchData();
     super.initState();
+     fetchData();
   }
 
 

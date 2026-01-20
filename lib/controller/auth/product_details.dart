@@ -1,19 +1,21 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:dada_ecommerce/controller/auth/product_api.dart';
 import 'package:http/http.dart' as http;
 
 class GetProductDetails{
-  Future<dynamic> getData() async{
+  Future<Map> getData() async{
     try{
       Uri uri = Uri.parse("https://b4.coderangon.com/api/products");
       var res = await http.get(uri);
       if (res.statusCode == 200){
         var jsonData = jsonDecode(res.body);
+
         return jsonData ['data'];
 
+
       }
+
 
     }catch(e){
       log("Error : $e");
