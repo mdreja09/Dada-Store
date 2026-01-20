@@ -28,7 +28,7 @@ class _ProductDetailsState extends State<ProductDetails> {
   Map data = {};
 
   fetchData() async {
-    data = await GetProductDetails().getData();
+    data = await GetProductDetails().getData(id: 14);
     if (data.isNotEmpty) {
       for (var i in data["gallery"]) {
         imgList.add(i);
