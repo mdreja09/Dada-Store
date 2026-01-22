@@ -41,7 +41,7 @@ class _ProductDetailsState extends State<ProductDetails> {
 
   @override
   void initState() {
-    // TODO: implement initState
+
     super.initState();
     fetchData();
   }
@@ -118,7 +118,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 TitleWidget(data: data),
                 Row(
                   children: [
-                    CustomTextWidget(text: "SKU :"),
+                    CustomTextWidget(text: "SKU : "),
                     CustomTextWidget(text: "${data["sku"]}"),
                   ],
                 ),

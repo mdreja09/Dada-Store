@@ -2,6 +2,7 @@
 
 
 
+import 'package:dada_ecommerce/view/home_screen/HomeScreen.dart';
 import 'package:dada_ecommerce/view/product_details/ui.dart';
 import 'package:dada_ecommerce/view/splash/splash_screen.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       builder: EasyLoading.init(),
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: Homescreen(),
     );
   }
 }
