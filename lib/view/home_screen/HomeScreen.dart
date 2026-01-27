@@ -77,7 +77,7 @@ class _HomescreenState extends State<Homescreen> {
             // 🖼️ Carousel slider
             CarouselSlider(
               options: CarouselOptions(
-                height: 200,
+                height: 180,
                 viewportFraction: 1,
                 autoPlay: true,
                 autoPlayInterval: const Duration(seconds: 3),
@@ -121,7 +121,7 @@ class _HomescreenState extends State<Homescreen> {
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => Container(
-                  margin: EdgeInsetsGeometry.symmetric(horizontal: 5,),
+                  margin: EdgeInsetsGeometry.symmetric(horizontal: 2,),
 
                 height: 90,
                 width: 109,
@@ -129,7 +129,8 @@ class _HomescreenState extends State<Homescreen> {
                   color: Colors.grey,
                   borderRadius: BorderRadius.circular(15)
                 ),
-              ),),
+              ),
+              ),
             )
           ],
         ),
