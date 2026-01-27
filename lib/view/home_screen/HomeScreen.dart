@@ -1,4 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dada_ecommerce/view/home_screen/widget/indicator_widget.dart';
+import 'package:dada_ecommerce/view/home_screen/widget/row_widget.dart';
 import 'package:dada_ecommerce/view/home_screen/widget/text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -38,10 +40,39 @@ class _HomescreenState extends State<Homescreen> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
+
             // 🔍 Search bar section
-            TextFieldWidget(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.search),
+                        hintText: "Search product",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  Container(
+                    height: 46,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.amber,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Icon(Icons.tune, size: 23),
+                  ),
+                ],
+              ),
+            ),
 
             // 🖼️ Carousel slider
             CarouselSlider(
@@ -74,50 +105,42 @@ class _HomescreenState extends State<Homescreen> {
             const SizedBox(height: 15),
 
             // 🟡 Indicator dots
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: imgList.asMap().entries.map((entry) {
-                return Container(
-                  width: 8,
-                  height: 8,
-                  margin: const EdgeInsets.symmetric(horizontal: 4),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: currentIndex == entry.key
-                        ? Colors.amber
-                        : Colors.grey,
-                  ),
-                );
-              }).toList(),
-            ),
+            IndicatorWidget(imgList: imgList, currentIndex: currentIndex),
 
             const SizedBox(height: 20),
 
             // 📦 Title row
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
-                  "Popular Products",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+            TitleWidget(),
+            SizedBox(height: 20,),
+            //  Container
+            SizedBox(
+              height: 110,
+              width: MediaQuery.sizeOf(context).width,
+              child: ListView.builder(
+                itemCount: 10,
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => Container(
+                  margin: EdgeInsetsGeometry.symmetric(horizontal: 5,),
+
+                height: 90,
+                width: 109,
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.circular(15)
                 ),
-                Text(
-                  "See all",
-                  style: TextStyle(
-                    color: Colors.amber,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
-            ),
+              ),),
+            )
           ],
         ),
       ),
     );
   }
 }
+
+
+
+
+
 
 
