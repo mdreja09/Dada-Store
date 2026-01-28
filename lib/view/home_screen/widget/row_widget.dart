@@ -6,11 +6,14 @@ class TitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final Text ? text;
+    // final TextStyle? style ;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: const [
         Text(
-          "Popular Products",
+          "BestSelling",
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
