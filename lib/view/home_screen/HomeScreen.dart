@@ -47,31 +47,7 @@ class _HomescreenState extends State<Homescreen> {
             // 🔍 Search bar section
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.search),
-                        hintText: "Search product",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 20),
-                  Container(
-                    height: 46,
-                    width: 50,
-                    decoration: BoxDecoration(
-                      color: Colors.amber,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Icon(Icons.tune, size: 23),
-                  ),
-                ],
-              ),
+              child: SearchWidget(),
             ),
 
             // 🖼️ Carousel slider
@@ -120,16 +96,31 @@ class _HomescreenState extends State<Homescreen> {
                 itemCount: 10,
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => Container(
-                  margin: EdgeInsetsGeometry.symmetric(horizontal: 2,),
+                itemBuilder: (context, index) => Stack(
+                  children: [
+                     Container(
+                      margin: EdgeInsetsGeometry.symmetric(horizontal: 2,),
 
-                height: 90,
-                width: 109,
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(15)
+                      height: 109,
+                      width: 90,
+                      decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.circular(15)
+                      ),
+
+
+
+                    ),
+                    Positioned(
+                      bottom: 30,
+                      child: Container(
+                        height: 18,
+                        width: 90,
+                        color: Color(0xff201E1FCF),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
               ),
             )
           ],
@@ -138,6 +129,8 @@ class _HomescreenState extends State<Homescreen> {
     );
   }
 }
+
+
 
 
 
