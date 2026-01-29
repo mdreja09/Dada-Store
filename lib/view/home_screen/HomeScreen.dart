@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:dada_ecommerce/view/home_screen/widget/indicator_widget.dart';
 import 'package:dada_ecommerce/view/home_screen/widget/row_widget.dart';
 import 'package:dada_ecommerce/view/home_screen/widget/text_field.dart';
@@ -39,6 +40,7 @@ class _HomescreenState extends State<Homescreen> {
       "category": "Head CAP"
     },
   ];
+  int cirrentIndex =0;
 
   @override
   Widget build(BuildContext context) {
@@ -53,123 +55,158 @@ class _HomescreenState extends State<Homescreen> {
         ],
       ),
 
+
+
+
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // 🔍 Search bar section
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: SearchWidget(),
-            ),
-
-            // 🖼️ Carousel slider
-            CarouselSlider(
-              options: CarouselOptions(
-                height: 180,
-                viewportFraction: 1,
-                autoPlay: true,
-                autoPlayInterval: const Duration(seconds: 3),
-                onPageChanged: (index, reason) {
-                  setState(() {
-                    currentIndex = index;
-                  });
-                },
+        child: SingleChildScrollView(
+          child: Column(
+          
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+          
+              // 🔍 Search bar section
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                child: SearchWidget(),
               ),
-              items: imgList.map((imgUrl) {
-                return Container(
-                  width: double.infinity,
-                  margin: const EdgeInsets.symmetric(horizontal: 5),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    image: DecorationImage(
-                      image: NetworkImage(imgUrl),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                );
-              }).toList(),
-            ),
-
-            const SizedBox(height: 15),
-
-            // 🟡 Indicator dots
-            IndicatorWidget(imgList: imgList, currentIndex: currentIndex),
-
-            const SizedBox(height: 20),
-
-            // 📦 Title row
-            CustomTextWidget(text: "Categories"),
-            SizedBox(height: 20),
-            //  Container
-            SizedBox(
-              height: 110,
-              width: MediaQuery.sizeOf(context).width,
-              child: ListView.builder(
-                itemCount: 10,
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => Stack(
-                  children: [
-                    Container(
-                      margin: EdgeInsetsGeometry.symmetric(horizontal: 2),
-
-                      height: 109,
-                      width: 90,
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(
-                          fit: BoxFit.fill,
-                          image: NetworkImage(
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHVFbFkgUvaKBplsNd0Zer15zOXg6kaqaeXQ&s",
-                          ),
-                        ),
+          
+              // 🖼️ Carousel slider
+              CarouselSlider(
+                options: CarouselOptions(
+                  height: 180,
+                  viewportFraction: 1,
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 3),
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      currentIndex = index;
+                    });
+                  },
+                ),
+                items: imgList.map((imgUrl) {
+                  return Container(
+                    width: double.infinity,
+                    margin: const EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      image: DecorationImage(
+                        image: NetworkImage(imgUrl),
+                        fit: BoxFit.cover,
                       ),
                     ),
-                    Positioned(
-                      bottom: 30,
-                      child: Container(
-                        alignment: Alignment.center,
-                        height: 18,
+                  );
+                }).toList(),
+              ),
+          
+              const SizedBox(height: 15),
+          
+              // 🟡 Indicator dots
+              IndicatorWidget(imgList: imgList, currentIndex: currentIndex),
+          
+              const SizedBox(height: 20),
+          
+              // 📦 Title row
+              CustomTextWidget(text: "Categories"),
+              SizedBox(height: 20),
+              //  Container
+              SizedBox(
+                height: 110,
+                width: MediaQuery.sizeOf(context).width,
+                child: ListView.builder(
+                  itemCount: 10,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) => Stack(
+                    children: [
+                      Container(
+                        margin: EdgeInsetsGeometry.symmetric(horizontal: 2),
+          
+                        height: 109,
                         width: 90,
-                        color: Color(0xff201E1FCF),
-                        child: Center(
-                          child: CustomTextWidget(
-                            text: "Women's",
-                            color: Colors.white,
-                            fW: FontWeight.w600,
+                        decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage(
+                              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHVFbFkgUvaKBplsNd0Zer15zOXg6kaqaeXQ&s",
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                      Positioned(
+                        bottom: 30,
+                        child: Container(
+                          alignment: Alignment.center,
+                          height: 18,
+                          width: 90,
+                          color: Color(0xff201E1FCF),
+                          child: Center(
+                            child: CustomTextWidget(
+                              text: "Women's",
+                              color: Colors.white,
+                              fW: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            SizedBox(height: 20),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const [
-         CustomTextWidget(text: "Best Selling"),
-          CustomTextWidget(text: "See all",color: Colors.amber,)
-        ],
-      ),
-            SizedBox(
-              height: 261,
-              width: MediaQuery.sizeOf(context).width,
-              child: ListView.builder(
-                itemCount: 10,
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) =>
-                    ProductCardWidget(data: p[0]),
-              ),
-            ),
+              SizedBox(height: 20),
+                Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: const [
+           CustomTextWidget(text: "Best Selling"),
+            CustomTextWidget(text: "See all",color: Colors.amber,)
           ],
+                ),
+              // Best Selling
+              SizedBox(
+                height: 261,
+                width: MediaQuery.sizeOf(context).width,
+                child: ListView.builder(
+                  itemCount: 10,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) =>
+                      ProductCardWidget(data: p[0]),
+                ),
+              ),
+                SizedBox(height: 20,),
+                Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: const [
+            CustomTextWidget(text: "New Arrival"),
+            CustomTextWidget(text: "See all",color: Colors.amber,)
+            ],
+          ),
+          
+              // New Selling
+          
+              SizedBox(
+                height: 261,
+                width: MediaQuery.sizeOf(context).width,
+                child: ListView.builder(
+                  
+                  itemCount: 10,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) =>
+                      ProductCardWidget(data: p[0]),
+                ),
+              ),
+              SizedBox(height: 20,),
+          
+          
+                ]
+          ),
         ),
-      ),
+
+    )
     );
   }
 }
