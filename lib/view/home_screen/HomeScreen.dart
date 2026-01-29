@@ -40,6 +40,19 @@ class _HomescreenState extends State<Homescreen> {
       "category": "Head CAP"
     },
   ];
+
+  fetchSlider()async{
+
+  }
+
+
+
+  @override
+  void initState() {
+    fetchSlider();
+
+    super.initState();
+  }
   int cirrentIndex =0;
 
   @override
@@ -157,6 +170,8 @@ class _HomescreenState extends State<Homescreen> {
                 ),
               ),
               SizedBox(height: 20),
+
+                // Best Selling Text
                 Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: const [
@@ -177,6 +192,7 @@ class _HomescreenState extends State<Homescreen> {
                 ),
               ),
                 SizedBox(height: 20,),
+                // New Arrival Text
                 Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: const [
