@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:dada_ecommerce/controller/auth/slider.dart';
 import 'package:dada_ecommerce/view/home_screen/widget/indicator_widget.dart';
 import 'package:dada_ecommerce/view/home_screen/widget/row_widget.dart';
 import 'package:dada_ecommerce/view/home_screen/widget/text_field.dart';
@@ -41,7 +44,16 @@ class _HomescreenState extends State<Homescreen> {
     },
   ];
 
+  List sliderList = [];
+
   fetchSlider()async{
+    sliderList = await SliderController().getSliderData();
+
+    log(" ${sliderList}");
+    sliderList.clear();
+    setState(() {
+
+    });
 
   }
 
@@ -86,7 +98,7 @@ class _HomescreenState extends State<Homescreen> {
               ),
           
               // 🖼️ Carousel slider
-              CarouselSlider(
+              sliderList.isEmpty ? SizedBox() :CarouselSlider(
                 options: CarouselOptions(
                   height: 180,
                   viewportFraction: 1,
@@ -96,16 +108,18 @@ class _HomescreenState extends State<Homescreen> {
                     setState(() {
                       currentIndex = index;
                     });
+
                   },
                 ),
-                items: imgList.map((imgUrl) {
+                items: sliderList.map((sliderList) {
                   return Container(
                     width: double.infinity,
                     margin: const EdgeInsets.symmetric(horizontal: 5),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       image: DecorationImage(
-                        image: NetworkImage(imgUrl),
+                        // this problem
+                        image: NetworkImage('https://b4.coderangon.com/storage/${sliderList[sliderList]}'),
                         fit: BoxFit.cover,
                       ),
                     ),
