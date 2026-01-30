@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:dada_ecommerce/controller/auth/selling_type.dart';
 import 'package:dada_ecommerce/controller/auth/slider.dart';
 import 'package:dada_ecommerce/view/home_screen/widget/indicator_widget.dart';
 import 'package:dada_ecommerce/view/home_screen/widget/row_widget.dart';
@@ -9,6 +10,7 @@ import 'package:dada_ecommerce/view/home_screen/widget/text_field.dart';
 import 'package:dada_ecommerce/view/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
+import '../../controller/auth/categoty.dart';
 import '../widgets/product_card.dart';
 
 class Homescreen extends StatefulWidget {
@@ -45,6 +47,8 @@ class _HomescreenState extends State<Homescreen> {
   ];
 
   List sliderList = [];
+  List categoryList = [];
+  Map sellingType = {};
 
   fetchSlider()async{
     sliderList = await SliderController().getSliderData();
@@ -56,12 +60,28 @@ class _HomescreenState extends State<Homescreen> {
     });
 
   }
+  // Category API
+
+  getCategoryData() async{
+    categoryList = await CategoryController().getCategoryData();
+    log("${categoryList}");
+    setState(() {
+
+    });
+  }
+  // Selling type API
+  getSellingTypeData() async{
+    sellingType =await SellingTypeController().getSellingTypeData();
+    log("${sellingType}");
+  }
 
 
 
   @override
   void initState() {
     fetchSlider();
+    getCategoryData();
+    getSellingTypeData();
 
     super.initState();
   }
@@ -111,7 +131,7 @@ class _HomescreenState extends State<Homescreen> {
 
                   },
                 ),
-                items: sliderList.map((sliderList) {
+                items: sliderList.map((i) {
                   return Container(
                     width: double.infinity,
                     margin: const EdgeInsets.symmetric(horizontal: 5),
@@ -119,7 +139,7 @@ class _HomescreenState extends State<Homescreen> {
                       borderRadius: BorderRadius.circular(12),
                       image: DecorationImage(
                         // this problem
-                        image: NetworkImage('https://b4.coderangon.com/storage/${sliderList[sliderList]}'),
+                        image: NetworkImage('https://b4.coderangon.com/storage/${sliderList[i]["image"]}'),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -137,12 +157,13 @@ class _HomescreenState extends State<Homescreen> {
               // 📦 Title row
               CustomTextWidget(text: "Categories"),
               SizedBox(height: 20),
-              //  Container
+
+              // Categories
               SizedBox(
                 height: 110,
                 width: MediaQuery.sizeOf(context).width,
                 child: ListView.builder(
-                  itemCount: 10,
+                  itemCount: categoryList.length,
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) => Stack(
@@ -158,7 +179,7 @@ class _HomescreenState extends State<Homescreen> {
                           image: DecorationImage(
                             fit: BoxFit.fill,
                             image: NetworkImage(
-                              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHVFbFkgUvaKBplsNd0Zer15zOXg6kaqaeXQ&s",
+                                ("https://b4.coderangon.com/api/storage/${categoryList[index]["image"]}")
                             ),
                           ),
                         ),
@@ -172,7 +193,7 @@ class _HomescreenState extends State<Homescreen> {
                           color: Color(0xff201E1FCF),
                           child: Center(
                             child: CustomTextWidget(
-                              text: "Women's",
+                              text: "${categoryList[index]["name"]}",
                               color: Colors.white,
                               fW: FontWeight.w600,
                             ),
@@ -185,6 +206,8 @@ class _HomescreenState extends State<Homescreen> {
               ),
               SizedBox(height: 20),
 
+
+
                 // Best Selling Text
                 Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -193,6 +216,8 @@ class _HomescreenState extends State<Homescreen> {
             CustomTextWidget(text: "See all",color: Colors.amber,)
           ],
                 ),
+
+
               // Best Selling
               SizedBox(
                 height: 261,
@@ -202,10 +227,11 @@ class _HomescreenState extends State<Homescreen> {
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) =>
-                      ProductCardWidget(data: p[0]),
+                      ProductCardWidget(data: sellingType["hot-selling"][index]),
                 ),
               ),
-                SizedBox(height: 20,),
+                SizedBox(height: 20),
+
                 // New Arrival Text
                 Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

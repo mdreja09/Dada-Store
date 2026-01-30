@@ -14,19 +14,20 @@ class ProductCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     log("${data['title']}");
     return InkWell(
-      onTap: (){
+      onTap: () {
         log("______Data : ${data['id']}_____");
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductDetails(pId: data['id'],)));
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductDetails(pId: data['id']),
+          ),
+        );
       },
       child: Stack(
         children: [
           Card(
-
             child: Column(
-
               children: [
-
-
                 Container(
                   height: 156,
                   width: 200,
@@ -36,10 +37,10 @@ class ProductCardWidget extends StatelessWidget {
                       topLeft: Radius.circular(10),
                     ),
                   ),
-                  child: Image.network
-
-                    (fit: BoxFit.fitWidth,
-                      "https://b4.coderangon.com/storage/${data['image']}"),
+                  child: Image.network(
+                    fit: BoxFit.fitWidth,
+                    "https://b4.coderangon.com/storage/${data['image']}",
+                  ),
                 ),
                 CustomTextWidget(
                   text: data['title'],
@@ -76,7 +77,10 @@ class ProductCardWidget extends StatelessWidget {
                   child: Center(
                     child: Text(
                       "_Add to Card_",
-                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 ),
