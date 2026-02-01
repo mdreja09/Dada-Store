@@ -223,7 +223,7 @@ class _HomescreenState extends State<Homescreen> {
                 height: 261,
                 width: MediaQuery.sizeOf(context).width,
                 child: ListView.builder(
-                  itemCount: 10,
+                  itemCount: sellingType['hot-selling'].length,
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) =>
@@ -248,13 +248,13 @@ class _HomescreenState extends State<Homescreen> {
                 width: MediaQuery.sizeOf(context).width,
                 child: ListView.builder(
                   
-                  itemCount: 10,
+                  itemCount: sellingType['top-selling'].length,
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) =>
-                      ProductCardWidget(data: p[0]),
+                      ProductCardWidget(data: sellingType["new-product"][index])),
                 ),
-              ),
+
               SizedBox(height: 20,),
           
           
