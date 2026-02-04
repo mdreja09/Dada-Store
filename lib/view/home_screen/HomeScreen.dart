@@ -1,11 +1,9 @@
 import 'dart:developer';
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:dada_ecommerce/controller/auth/selling_type.dart';
 import 'package:dada_ecommerce/controller/auth/slider.dart';
 import 'package:dada_ecommerce/view/home_screen/widget/indicator_widget.dart';
-import 'package:dada_ecommerce/view/home_screen/widget/row_widget.dart';
 import 'package:dada_ecommerce/view/home_screen/widget/text_field.dart';
 import 'package:dada_ecommerce/view/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -29,8 +27,7 @@ class _HomescreenState extends State<Homescreen> {
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmN98PVoIT1CuxyzOhwS1racP0k8dCUaHUZg&s',
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfeC_VO82qKaUracW2tsC-3_OWbcnPWUNEhg&s',
   ];
-  List p =[
-
+  List p = [
     {
       "id": 2,
       "title": "Men's Sports Mesh Head Cap",
@@ -42,7 +39,7 @@ class _HomescreenState extends State<Homescreen> {
       "image": "products/WOY0mkqstqgfD144YQ63Lgfg56vi3FmSYqG4Gqsi.jpg",
       "rating": "4.5",
       "review_count": "102",
-      "category": "Head CAP"
+      "category": "Head CAP",
     },
   ];
 
@@ -50,32 +47,29 @@ class _HomescreenState extends State<Homescreen> {
   List categoryList = [];
   Map sellingType = {};
 
-  fetchSlider()async{
+  fetchSlider() async {
     sliderList = await SliderController().getSliderData();
 
     log(" ${sliderList}");
-    sliderList.clear();
-    setState(() {
-
-    });
-
+    //sliderList.clear();
+    setState(() {});
   }
   // Category API
 
-  getCategoryData() async{
+  getCategoryData() async {
     categoryList = await CategoryController().getCategoryData();
     log("${categoryList}");
+    setState(() {});
+  }
+
+  // Selling type API
+  getSellingTypeData() async {
+    sellingType = await SellingTypeController().getSellingTypeData();
+    log("${sellingType}");
     setState(() {
 
     });
   }
-  // Selling type API
-  getSellingTypeData() async{
-    sellingType =await SellingTypeController().getSellingTypeData();
-    log("${sellingType}");
-  }
-
-
 
   @override
   void initState() {
@@ -85,7 +79,8 @@ class _HomescreenState extends State<Homescreen> {
 
     super.initState();
   }
-  int cirrentIndex =0;
+
+  int cirrentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -100,63 +95,61 @@ class _HomescreenState extends State<Homescreen> {
         ],
       ),
 
-
-
-
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: SingleChildScrollView(
           child: Column(
-          
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-          
               // 🔍 Search bar section
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: SearchWidget(),
               ),
-          
-              // 🖼️ Carousel slider
-              sliderList.isEmpty ? SizedBox() :CarouselSlider(
-                options: CarouselOptions(
-                  height: 180,
-                  viewportFraction: 1,
-                  autoPlay: true,
-                  autoPlayInterval: const Duration(seconds: 3),
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      currentIndex = index;
-                    });
 
-                  },
-                ),
-                items: sliderList.map((i) {
-                  return Container(
-                    width: double.infinity,
-                    margin: const EdgeInsets.symmetric(horizontal: 5),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      image: DecorationImage(
-                        // this problem
-                        image: NetworkImage('https://b4.coderangon.com/storage/${sliderList[i]["image"]}'),
-                        fit: BoxFit.cover,
+              // 🖼️ Carousel slider
+              sliderList.isEmpty
+                  ? SizedBox()
+                  : CarouselSlider(
+                      options: CarouselOptions(
+                        height: 180,
+                        viewportFraction: 1,
+                        autoPlay: true,
+                        autoPlayInterval: const Duration(seconds: 3),
+                        onPageChanged: (index, reason) {
+                          setState(() {
+                            currentIndex = index;
+                          });
+                        },
                       ),
+                      items: sliderList.map((item) {
+                        return Container(
+                          width: double.infinity,
+                          margin: const EdgeInsets.symmetric(horizontal: 5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            image: DecorationImage(
+                              // this problem
+                              image: NetworkImage(
+                                'sliderList[item]["image"]',
+                              ),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        );
+                      }).toList(),
                     ),
-                  );
-                }).toList(),
-              ),
-          
+
               const SizedBox(height: 15),
-          
+
               // 🟡 Indicator dots
               IndicatorWidget(imgList: imgList, currentIndex: currentIndex),
-          
-              const SizedBox(height: 21),
-          
+
+              const SizedBox(height: 20),
+
               // 📦 Title row
               CustomTextWidget(text: "Categories"),
-              SizedBox(height: 21),
+              SizedBox(height: 20),
 
               // Categories
               SizedBox(
@@ -170,7 +163,7 @@ class _HomescreenState extends State<Homescreen> {
                     children: [
                       Container(
                         margin: EdgeInsetsGeometry.symmetric(horizontal: 2),
-          
+
                         height: 109,
                         width: 90,
                         decoration: BoxDecoration(
@@ -179,7 +172,7 @@ class _HomescreenState extends State<Homescreen> {
                           image: DecorationImage(
                             fit: BoxFit.fill,
                             image: NetworkImage(
-                                ("https://b4.coderangon.com/api/storage/${categoryList[index]["image"]}")
+                              ("https://b4.coderangon.com/api/storage/${categoryList[index]["image"]}"),
                             ),
                           ),
                         ),
@@ -204,65 +197,66 @@ class _HomescreenState extends State<Homescreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 21),
+              SizedBox(height: 20),
 
-
-
-                // Best Selling Text
-                Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-           CustomTextWidget(text: "Best Selling"),
-            CustomTextWidget(text: "See all",color: Colors.amber,)
-          ],
-                ),
-
+              // Best Selling Text
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  CustomTextWidget(text: "Best Selling"),
+                  CustomTextWidget(text: "See all", color: Colors.amber),
+                ],
+              ),
 
               // Best Selling
               SizedBox(
                 height: 261,
                 width: MediaQuery.sizeOf(context).width,
                 child: ListView.builder(
-                  itemCount: sellingType['hot-selling'].length,
+                  itemCount: sellingType['hot-selling'] == null
+                      ? 0
+                      : sellingType['hot-selling'].length,
+
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) =>
-                      ProductCardWidget(data: sellingType["hot-selling"][index]),
+                  itemBuilder: (context, index) => ProductCardWidget(
+                    data: sellingType["hot-selling"][index],
+                  ),
                 ),
               ),
-                SizedBox(height: 20),
+              SizedBox(height: 20),
 
-                // New Arrival Text
-                Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            CustomTextWidget(text: "New Arrival"),
-            CustomTextWidget(text: "See all",color: Colors.amber,)
-            ],
-          ),
-          
+              // New Arrival Text
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  CustomTextWidget(text: "New Arrival"),
+                  CustomTextWidget(text: "See all", color: Colors.amber),
+                ],
+              ),
+
               // New Selling
-          
               SizedBox(
                 height: 261,
                 width: MediaQuery.sizeOf(context).width,
                 child: ListView.builder(
-                  
-                  itemCount: sellingType['top-selling'].length,
+                  itemCount: sellingType['new-product'] == null
+                      ? 0
+                      : sellingType['new-product'].length,
+
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) =>
-                      ProductCardWidget(data: sellingType["new-product"][index])),
+                  itemBuilder: (context, index) => ProductCardWidget(
+                    data: sellingType["new-product"][index],
+                  ),
                 ),
+              ),
 
-              SizedBox(height: 25,),
-          
-          
-                ]
+              SizedBox(height: 25),
+            ],
           ),
         ),
-
-    )
+      ),
     );
   }
 }
