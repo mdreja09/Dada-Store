@@ -152,11 +152,11 @@ class _HomescreenState extends State<Homescreen> {
               // 🟡 Indicator dots
               IndicatorWidget(imgList: imgList, currentIndex: currentIndex),
           
-              const SizedBox(height: 20),
+              const SizedBox(height: 21),
           
               // 📦 Title row
               CustomTextWidget(text: "Categories"),
-              SizedBox(height: 20),
+              SizedBox(height: 21),
 
               // Categories
               SizedBox(
@@ -204,7 +204,7 @@ class _HomescreenState extends State<Homescreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 21),
 
 
 
@@ -255,7 +255,7 @@ class _HomescreenState extends State<Homescreen> {
                       ProductCardWidget(data: sellingType["new-product"][index])),
                 ),
 
-              SizedBox(height: 20,),
+              SizedBox(height: 25,),
           
           
                 ]
