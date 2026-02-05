@@ -140,12 +140,12 @@ class _HomescreenState extends State<Homescreen> {
                       }).toList(),
                     ),
 
-              const SizedBox(height: 15),
+              const SizedBox(height: 16),
 
               // 🟡 Indicator dots
               IndicatorWidget(imgList: imgList, currentIndex: currentIndex),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 21),
 
               // 📦 Title row
               CustomTextWidget(text: "Categories"),
