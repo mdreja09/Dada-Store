@@ -164,7 +164,7 @@ class _HomescreenState extends State<Homescreen> {
                       Container(
                         margin: EdgeInsetsGeometry.symmetric(horizontal: 2),
 
-                        height: 109,
+                        height: 110,
                         width: 90,
                         decoration: BoxDecoration(
                           color: Colors.grey,
@@ -204,7 +204,7 @@ class _HomescreenState extends State<Homescreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
                   CustomTextWidget(text: "Best Selling"),
-                  CustomTextWidget(text: "See all", color: Colors.amber),
+                  CustomTextWidget(text: " See All", color: Colors.amber),
                 ],
               ),
 
